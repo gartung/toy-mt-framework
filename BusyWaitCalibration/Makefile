@@ -1,7 +1,7 @@
 CXX=g++
 CPPFLAGS=-I.
-CXXFLAGS=-O3 -g -std=c++0x -fPIC
-LDFLAGS= -std=c++0x
+CXXFLAGS=-O3 -g -std=c++14 -fPIC
+LDFLAGS= -std=c++14
 LINKER=g++
 
 all: BusyWaitCalibrate

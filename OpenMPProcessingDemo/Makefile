@@ -1,11 +1,11 @@
 #Change this to point to your boost installation
-BOOST_INCLUDES := -I/Users/cdj/src/cms/software/FWLiteVersions/osx106_amd64_gcc461/external/boost/1.47.0-cms3/include
+BOOST_INCLUDES := -I/cvmfs/cms.cern.ch/slc6_amd64_gcc530/external/boost/1.57.0-ikhhed/include
 #BOOST_INCLUDES := -I/uscms_data/d2/cdj/build/multicore/dispatch/install/include
 #BOOST_INCLUDES := -I/uscms_data/d2/cdj/build/multicore/openmp/install/include
 CPPFLAGS=$(BOOST_INCLUDES) -IOpenMPFrameworkCore/ -I../BusyWaitCalibration/ -DPARALLEL_MODULES
-CXXFLAGS=-O3 -g -std=c++0x -fopenmp -fPIC
-LDFLAGS= -std=c++0x
-LINKER=g++ -std=c++0x -fopenmp
+CXXFLAGS=-O3 -g -std=c++14 -fopenmp -fPIC
+LDFLAGS= -std=c++14
+LINKER=g++ -std=c++14 -fopenmp
 
 all: libOpenMPFrameworkCore.so libOpenMPTestModules.so OpenMPDemo
 

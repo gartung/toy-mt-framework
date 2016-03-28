@@ -7,7 +7,7 @@ find_package(TBB)
 find_package(CppUnit)
 find_package(Boost)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 add_subdirectory(BusyWaitCalibration)
 add_subdirectory(DispatchProcessingDemo)

@@ -1,7 +1,7 @@
 #Change this to point to your boost installation
 #BOOST_INCLUDES := -I/Users/cdj/src/cms/software/FWLiteVersions/osx106_amd64_gcc461/external/boost/1.47.0-cms3/include
 #BOOST_INCLUDES := -I/Users/cdj/src/cms/software/FWLiteVersions/osx108_amd64_gcc470/external/boost/1.50.0/include
-BOOST_INCLUDES := -I/Users/cdj/src/artCourse/products/boost/v1_57_0/Darwin64bit+14-e7-prof/include
+BOOST_INCLUDES := -I/cvmfs/cms.cern.ch/slc6_amd64_gcc530/external/boost/1.57.0-ikhhed/include
 #BOOST_INCLUDES := -I$(BOOST_INC)
 CPPUNIT_INCLUDES := -I/Users/cdj/src/cms/threading/external/include
 CPPUNIT_LIB_PATH := -L/Users/cdj/src/cms/threading/external/lib
@@ -22,7 +22,6 @@ CPPUNIT_LIB_PATH := -L/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/cppunit/1.12
 CPPUNIT_LIB := $(CPPUNIT_LIB_PATH) -lcppunit
 #change the following to to point to where you installed tbb
 TBB_INCLUDES := -I/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/tbb/43_20150316oss/include
-#TBB_LIB_PATH := -L/uscms_data/d2/cdj/build/multicore/tbb/tbb40_20120408oss//build/linux_intel64_gcc_cc4.7.0_libc2.5_kernel2.6.18_debug
 TBB_LIB_PATH := -L/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/tbb/43_20150316oss/lib
 CXXOTHERFLAGS := -D__USE_XOPEN2K8
 endif

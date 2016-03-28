@@ -1,5 +1,5 @@
-all : BusyWaitCalibrate DispatchDemo OpenMPDemo SingleThreadedDemo
-
+all : BusyWaitCalibrate OpenMPDemo SingleThreadedDemo
+# BusyWaitCalibrate DispatchDemo OpenMPDemo SingleThreadedDemo
 BusyWaitCalibrate :
 	cd BusyWaitCalibration ; ${MAKE} all ; cp BusyWaitCalibrate ..
 
