@@ -1,34 +1,21 @@
 #Change this to point to your boost installation
-#BOOST_INCLUDES := -I/Users/cdj/src/cms/software/FWLiteVersions/osx106_amd64_gcc461/external/boost/1.47.0-cms3/include
-#BOOST_INCLUDES := -I/Users/cdj/src/cms/software/FWLiteVersions/osx108_amd64_gcc470/external/boost/1.50.0/include
-BOOST_INCLUDES := -I/cvmfs/cms.cern.ch/slc6_amd64_gcc530/external/boost/1.57.0-ikhhed/include
-#BOOST_INCLUDES := -I$(BOOST_INC)
-CPPUNIT_INCLUDES := -I/Users/cdj/src/cms/threading/external/include
-CPPUNIT_LIB_PATH := -L/Users/cdj/src/cms/threading/external/lib
+BOOST_INCLUDES := -I/home/gartung/products/boost/v1_57_0a/Linux64bit+2.6-2.12-e9-prof/include
+
+CPPUNIT_INCLUDES := -I/home/gartung/products/cppunit/v1_12_1c/Linux64bit+2.6-2.12-e9-prof/include
+CPPUNIT_LIB_PATH := -L/home/gartung/products/cppunit/v1_12_1c/Linux64bit+2.6-2.12-e9-prof/lib
 CPPUNIT_LIB := $(CPPUNIT_LIB_PATH) -lcppunit
-CXXOTHERFLAGS :=
-UNAME:=$(shell uname -s)
-#UNAME:=Linux
-#TBB_INCLUDES :=-I/Users/cdj/src/cms/threading/tbb/tbb40_20120408oss/include
-#TBB_LIB_PATH :=-L/Users/cdj/src/cms/threading/tbb/tbb40_20120408oss/build/macos_intel64_gcc_cc4.2.1_os10.7.4_release/
-TBB_INCLUDES := -I/Users/cdj/src/artCourse/products/tbb/v4_3_5/Darwin64bit+14-e7-prof/include
-TBB_LIB_PATH := -L/Users/cdj/src/artCourse/products/tbb/v4_3_5/Darwin64bit+14-e7-prof/lib/
-#TBB_LIB_PATH :=-L/Users/cdj/src/cms/threading/tbb/tbb40_20120408oss/build/macos_intel64_gcc_cc4.2.1_os10.7.4_debug/
-#TBB_LIB := $(TBB_LIB_PATH) -ltbb_debug
-ifeq ($(UNAME), Linux)
-BOOST_INCLUDES := -I/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/boost/1.57.0-kpegke/include
-CPPUNIT_INCLUDES := -I/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/cppunit/1.12.1/include
-CPPUNIT_LIB_PATH := -L/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/cppunit/1.12.1/lib
-CPPUNIT_LIB := $(CPPUNIT_LIB_PATH) -lcppunit
+
 #change the following to to point to where you installed tbb
-TBB_INCLUDES := -I/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/tbb/43_20150316oss/include
-TBB_LIB_PATH := -L/cvmfs/cms.cern.ch/slc6_amd64_gcc493/external/tbb/43_20150316oss/lib
+
+TBB_INCLUDES := -I/home/gartung/products/tbb/v4_4_3/Linux64bit+2.6-2.12-e9-prof/include
+TBB_LIB_PATH := -L/home/gartung/products/tbb/v4_4_3/Linux64bit+2.6-2.12-e9-prof/lib
+
 CXXOTHERFLAGS := -D__USE_XOPEN2K8
-endif
+
 TBB_LIB := $(TBB_LIB_PATH) -ltbb
+
 CXX=g++
 CPPFLAGS=$(TBB_INCLUDES) $(BOOST_INCLUDES) $(CPPUNIT_INCLUDES) -ITBBFrameworkCore/ -I../BusyWaitCalibration/
-#CXXFLAGS=-O3 -g -std=c++14 -fPIC -pthread $(CXXOTHERFLAGS)
 CXXFLAGS=-g -std=c++14 -fPIC -pthread $(CXXOTHERFLAGS)
 LDFLAGS= -std=c++14 -pthread
 LINKER=g++
