@@ -14,8 +14,8 @@ DISPATCH_LIB := $(DISPATCH_LIB_PATH) -ldispatch -lkqueue
 endif
 CXX=g++
 CPPFLAGS=$(DISPATCH_INCLUDES) $(BOOST_INCLUDES) -IDispatchFrameworkCore/ -I../BusyWaitCalibration/
-CXXFLAGS=-O3 -g -std=c++0x -fPIC
-LDFLAGS= -std=c++0x
+CXXFLAGS=-O3 -g -std=c++14 -fPIC
+LDFLAGS= -std=c++14
 LINKER=g++
 
 all: libDispatchFrameworkCore.so libDispatchTestModules.so DispatchDemo
