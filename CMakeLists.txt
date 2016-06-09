@@ -1,7 +1,7 @@
 project(TOY_MT_FRAMEWORK)
 cmake_minimum_required(VERSION 2.8)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules")
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules" ${CMAKE_MODULE_PATH} )
 find_package(OpenMP)
 find_package(TBB)
 find_package(CppUnit)
