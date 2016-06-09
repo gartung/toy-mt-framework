@@ -5,7 +5,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Mo
 find_package(OpenMP)
 find_package(TBB)
 find_package(CppUnit)
-#find_package(Boost)
+set(Boost_NO_BOOST_CMAKE ON)
+find_package(Boost)
 include_directories(${Boost_INCLUDE_DIR})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
