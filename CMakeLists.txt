@@ -1,5 +1,8 @@
 project(TOY_MT_FRAMEWORK)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
+include(GNUInstallDirs)
+set(BASE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/BuildProducts")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BASE_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_BINDIR}")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules" ${CMAKE_MODULE_PATH} )
 find_package(OpenMP)
@@ -46,9 +49,6 @@ cms-data/reco_multijet_sleeping.config
 cms-data/transform_times.py
 )
 
-include(GNUInstallDirs)
-set(BASE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/BuildProducts")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BASE_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_BINDIR}")
 
 install(FILES ${readme_files} 
   DESTINATION ${CMAKE_INSTALL_DIR}
