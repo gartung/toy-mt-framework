@@ -48,3 +48,11 @@ add_library(OpenMPTestModules SHARED ${TEST_FILES} OpenMPFrameworkCore)
 
 add_executable(OpenMPDemo main.cpp)
 target_link_libraries(OpenMPDemo OpenMPFrameworkCore OpenMPTestModules)
+
+install(TARGETS OpenMPDemo OpenMPFrameworkCore
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT Runtime
+  )
+

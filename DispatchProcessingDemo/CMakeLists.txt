@@ -54,4 +54,10 @@ add_library(DispatchTestModules SHARED ${TEST_FILES} DispatchFrameworkCore)
 add_executable(DispatchDemo main.cpp)
 target_link_libraries(DispatchDemo DispatchFrameworkCore DispatchTestModules)
     
-
+install(
+  TARGETS DispatchDemo DispatchFrameworkCore DispatchTestModules
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT Runtime
+)

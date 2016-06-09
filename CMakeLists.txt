@@ -23,3 +23,41 @@ endif()
 if (OPENMP_FOUND)
     add_subdirectory(OpenMPProcessingDemo)
 endif()
+
+set(readme_files
+README
+README.md
+)
+
+set(cms-data-files
+cms-data/changebusywait
+cms-data/changenevts
+cms-data/createConfig_ave_times.py
+cms-data/createConfig.py
+cms-data/reco_hipileup_5_2_0_busywait_perfectIO.config
+cms-data/reco_hipileup_5_2_0_sleeping_perfectIO.config
+cms-data/reco_minbias_busywait.config
+cms-data/reco_minbias_sleeping_1000.config
+cms-data/reco_minbias_sleeping_betweenmodules.config
+cms-data/reco_minbias_sleeping.config
+cms-data/reco_minbias_sleeping_perfectIO.config
+cms-data/reco_multijet_sleeping_1000.config
+cms-data/reco_multijet_sleeping.config
+cms-data/transform_times.py
+)
+
+include(GNUInstallDirs)
+set(BASE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/BuildProducts")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BASE_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_BINDIR}")
+
+install(FILES ${readme_files} 
+  DESTINATION ${CMAKE_INSTALL_DIR}
+  COMPONENT Runtime
+)
+
+install(FILES ${cms-data-files}
+  DESTINATION ${CMAKE_INSTALL_DIR}/cms-data
+  COMPONENT Runtime
+)
+
+
