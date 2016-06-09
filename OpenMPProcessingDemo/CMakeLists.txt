@@ -22,6 +22,14 @@ include_directories(BEFORE
     ${CMAKE_CURRENT_SOURCE_DIR}/OpenMPFrameworkCore)
 add_library(OpenMPFrameworkCore SHARED ${CORE_FILES})
 
+install(TARGETS OpenMPFrameworkCore
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT LIBRARY
+  )
+
+
 set(TEST_FILES
     OpenMPTestModules/BusyWaitPassFilter.cpp
     OpenMPTestModules/BusyWaitProducer.cpp
@@ -46,10 +54,19 @@ include_directories(BEFORE
     ${CMAKE_SOURCE_DIR}/BusyWaitCalibration)
 add_library(OpenMPTestModules SHARED ${TEST_FILES} OpenMPFrameworkCore)
 
+install(TARGETS OpenMPTestModules
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT LIBRARY
+  )
+
+
+
 add_executable(OpenMPDemo main.cpp)
 target_link_libraries(OpenMPDemo OpenMPFrameworkCore OpenMPTestModules)
 
-install(TARGETS OpenMPDemo OpenMPFrameworkCore
+install(TARGETS OpenMPDemo
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
