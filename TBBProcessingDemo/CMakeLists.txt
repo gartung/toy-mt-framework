@@ -1,7 +1,7 @@
 # See
 # http://stackoverflow.com/questions/1027247/best-way-to-specify-sourcefiles-in-cmake
 # including the discussion.
-include_directories(${TBB_INCLUDE_DIR})
+include_directories(${TBB_INCLUDE_DIRS})
 
 set(CORE_FILES
     TBBFrameworkCore/Event.cpp
@@ -29,6 +29,14 @@ include_directories(BEFORE
     ${CMAKE_CURRENT_SOURCE_DIR}/TBBFrameworkCore)
 add_library(TBBFrameworkCore SHARED ${CORE_FILES})
 target_link_libraries(TBBFrameworkCore ${TBB_LIBRARIES})
+
+install(TARGETS TBBFrameworkCore 
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT LIBRARY
+  )
+
 
 set(TEST_FILES
   TBBTestModules/BusyWaitPassFilter.cpp
@@ -63,6 +71,15 @@ include_directories(BEFORE
 add_library(TBBTestModules SHARED ${TEST_FILES})
 target_link_libraries(TBBTestModules TBBFrameworkCore)
 
+install(TARGETS TBBTestModules 
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT LIBRARY
+  )
+
+
+
 if(CPPUNIT_FOUND)
   include_directories(${CPPUNIT_INCLUDE_DIR})
   set(UNIT_TEST_FILES
@@ -76,3 +93,11 @@ endif()
 
 add_executable(TBBDemo main.cpp)
 target_link_libraries(TBBDemo TBBFrameworkCore TBBTestModules ${TBB_LIBRARY})
+
+install(TARGETS TBBDemo TBBFrameworkCore TBBTestModules 
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT Runtime
+  )
+
