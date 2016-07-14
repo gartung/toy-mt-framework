@@ -20,7 +20,7 @@ static double calibrate(unsigned long long iLoop)
   startCPUTime.tv_sec =theUsage.ru_stime.tv_sec+theUsage.ru_utime.tv_sec;
   startCPUTime.tv_usec =theUsage.ru_stime.tv_usec+theUsage.ru_utime.tv_usec;
 
-  std::cout << demo::busyWait(iLoop)<<std::endl;
+  std::cout << "integral loops=" << iLoop << ": integral result=" << demo::busyWait(iLoop)<<std::endl;
 
   if(0 != getrusage(RUSAGE_SELF, &theUsage)) {
     std::cerr<<errno;
@@ -33,7 +33,7 @@ static double calibrate(unsigned long long iLoop)
   double time = theUsage.ru_stime.tv_sec + theUsage.ru_utime.tv_sec - startCPUTime.tv_sec +
   microsecToSec * (theUsage.ru_stime.tv_usec + theUsage.ru_utime.tv_usec - startCPUTime.tv_usec);
 
-  std::cout <<iLoop<<" " << time<<" "<<iLoop/time<<std::endl;
+  std::cout <<"loops ="<<iLoop<<": time=" << time<<"s : busy_wait_calibration="<<iLoop/time<<" loops/sec "std::endl;
 
   return time;
 }
