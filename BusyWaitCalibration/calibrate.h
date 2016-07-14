@@ -32,9 +32,9 @@ static double calibrate(unsigned long long iLoop)
 
   double time = theUsage.ru_stime.tv_sec + theUsage.ru_utime.tv_sec - startCPUTime.tv_sec +
   microsecToSec * (theUsage.ru_stime.tv_usec + theUsage.ru_utime.tv_usec - startCPUTime.tv_usec);
+  double cal = iLoop/time;
+  std::cout <<"loops ="<<iLoop<<": time=" << time<<"s : busy_wait_calibration="<<cal<<" loops/sec "<<std::endl;
 
-  std::cout <<"loops ="<<iLoop<<": time=" << time<<"s : busy_wait_calibration="<<iLoop/time<<" loops/sec "std::endl;
-
-  return time;
+  return cal;
 }
 
