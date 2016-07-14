@@ -1,3 +1,18 @@
+#!/bin/bash
+
+declare -i step
+step=64
+declare -i nsteps
+nsteps=16
+declare -i iterations
+iterations=step
+declare -i ncore
+ncore=4
+declare -i nSimulEvt
+nSimulEvt=ncore
+
+for ((x=1;x<=${nsteps};x+=1)); do
+   cat >reco_hipileup_5_2_0_busywait_perfectIO.${x}.config <<EOF
 {"process": {"filters": [{"@label": "outputRECO",
                           "@type": "demo::EventTimesBusyWaitPassFilter",
                           "eventTimes": [0.587947,
@@ -1120,7 +1135,7 @@
 ],
              "label": "TEST",
              "options": {"busyWaitScaleFactor": 2080000.0,
-                         "nSimultaneousEvents": 1},
+                         "nSimultaneousEvents": ${nSimulEvt} },
              "paths": {"oRECO": ["outputRECO"], 
                        "oAOD": ["outputAOD"] },
              "producers": [{"@label": "elPFIsoDepositGamma",
@@ -53757,5 +53772,9 @@
                                            0.00077414499999999995],
                             "threadType": "ThreadSafeBetweenInstances",
                             "toGet": []}],
-             "source": {"@type": "demo::SimpleSource", "iterations": 1000}}}
-
+             "source": {"@type": "demo::SimpleSource", "iterations": ${iterations} }}}
+EOF
+echo qsub -n 2 --mode c1  -t 120 --env LD_LIBRARY_PATH=/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/:/soft/compilers/gcc/4.8.4/lib/gcc/:/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/../../../../powerpc64-bgq-linux/lib/:\$LD_LIBRARY_PATH ~/altbuild/BuildProducts/bin/TBBDemo ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${x}.config >>driver.sh
+iterations+=${step}
+nSimulEvt+=${ncore}
+done

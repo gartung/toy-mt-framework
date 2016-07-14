@@ -107,6 +107,7 @@ int main (int argc, char * const argv[]) {
     
     //ep.processAll(2);
     unsigned int nEvents = pConfig.get<unsigned int>("process.options.nSimultaneousEvents");
+    std::cout <<"# threads:"<<nThreads<<" # simultaneous events:"<<nEvents<<" total # events:"<<iterations<<std::endl;
     try {
        ep.processAll(nEvents);
     } catch(std::exception const& iException) {
