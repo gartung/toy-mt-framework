@@ -13,7 +13,6 @@
 #include "Producer.h"
 #include "Filter.h"
 
-#include "calibrate.h"
 #include "busy_wait_scale_factor.h"
 #include <sys/time.h>
 
@@ -87,8 +86,6 @@ int main (int argc, char * const argv[]) {
 
   ep.finishSetup();
 
-  unsigned long long const loops = 100000000;
-  busy_wait_scale_factor = calibrate(loops);  
   std::cout << "busy_wait_scale_factor = "<<busy_wait_scale_factor<<std::endl;
 
   {
