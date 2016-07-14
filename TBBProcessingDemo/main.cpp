@@ -13,6 +13,7 @@
 #include "Producer.h"
 #include "Filter.h"
 
+#include "calibrate.h"
 #include "busy_wait_scale_factor.h"
 #include <sys/time.h>
 
@@ -21,7 +22,6 @@
 #endif
 
 #include <errno.h>
-
 
 int main (int argc, char * const argv[]) {
   
@@ -48,7 +48,7 @@ int main (int argc, char * const argv[]) {
   
   
   busy_wait_scale_factor = pConfig.get<double>("process.options.busyWaitScaleFactor",2.2e+07);
-  
+
   boost::property_tree::ptree& filters=pConfig.get_child("process.filters");
   for(const boost::property_tree::ptree::value_type& f : filters) {
     std::unique_ptr<demo::Filter> pF = demo::FactoryManager<demo::Filter>::create(f.second.get<std::string>("@type"),f.second);
@@ -86,6 +86,11 @@ int main (int argc, char * const argv[]) {
   }
 
   ep.finishSetup();
+
+  unsigned long long const loops = 100000000;
+  busy_wait_scale_factor = calibrate(loops);  
+  std::cout << "busy_wait_scale_factor = "<<busy_wait_scale_factor<<std::endl;
+
   {
     struct timeval startCPUTime;
     
