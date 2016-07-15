@@ -1,21 +1,26 @@
 #!/bin/bash
 
-declare -i step
-step=64
+declare -i stepsize
+stepsize=64
 declare -i nsteps
-nsteps=32
+nsteps=20
 declare -i iterations
-iterations=step
+iterations=1000
 declare -i ncore
 ncore=4
 declare -i nSimulEvt
 nSimulEvt=ncore
+declare -i nThreads
+nThreads=64
+declare -i busyWaitScaleFactor
+busyWaitScaleFactor=2080000
 
 echo "#!/bin/sh" >driver.sh
 echo "#!/bin/sh" >runjob-driver.sh
 
 for ((x=1;x<=${nsteps};x+=1)); do
-   cat >reco_hipileup_5_2_0_busywait_perfectIO.${x}.config <<EOF
+echo $x
+   cat >reco_hipileup_5_2_0_busywait_perfectIO.${nThreads}.${nSimulEvt}.${iterations}.config <<EOF
 {"process": {"filters": [{"@label": "outputRECO",
                           "@type": "demo::EventTimesBusyWaitPassFilter",
                           "eventTimes": [0.587947,
@@ -1137,8 +1142,9 @@ for ((x=1;x<=${nsteps};x+=1)); do
                                      "product": ""}]}
 ],
              "label": "TEST",
-             "options": {"busyWaitScaleFactor": 2080000.0,
-                         "nSimultaneousEvents": ${nSimulEvt} },
+             "options": {"busyWaitScaleFactor": ${busyWaitScaleFactor}.0,
+                         "nSimultaneousEvents": ${nSimulEvt},
+                         "nThreads": ${nThreads} },
              "paths": {"oRECO": ["outputRECO"], 
                        "oAOD": ["outputAOD"] },
              "producers": [{"@label": "elPFIsoDepositGamma",
@@ -53777,8 +53783,9 @@ for ((x=1;x<=${nsteps};x+=1)); do
                             "toGet": []}],
              "source": {"@type": "demo::SimpleSource", "iterations": ${iterations} }}}
 EOF
-echo qsub -n 1 --mode c1  -t 120 --env LD_LIBRARY_PATH=/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/:/soft/compilers/gcc/4.8.4/lib/gcc/:/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/../../../../powerpc64-bgq-linux/lib/:\$LD_LIBRARY_PATH ~/altbuild/BuildProducts/bin/TBBDemo ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${x}.config >>driver.sh
-echo runjob -p1  --block \$COBALT_PARTNAME --verbose=DEBUG --envs LD_LIBRARY_PATH=/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/:/soft/compilers/gcc/4.8.4/lib/gcc/:/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/../../../../powerpc64-bgq-linux/lib/:\$LD_LIBRARY_PATH --exe ~/altbuild/BuildProducts/bin/TBBDemo --args ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${x}.config >>runjob-driver.sh
-iterations+=${step}
+echo qsub -n 32 --mode c1  -t 120 --env LD_LIBRARY_PATH=/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/:/soft/compilers/gcc/4.8.4/lib/gcc/:/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/../../../../powerpc64-bgq-linux/lib/:\$LD_LIBRARY_PATH ~/altbuild/BuildProducts/bin/TBBDemo ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${nThreads}.${nSimulEvt}.${iterations}.config >>driver-${nSimulEvt}.sh
+echo runjob -n 32 -p1  --block \$COBALT_PARTNAME --verbose=DEBUG --envs LD_LIBRARY_PATH=/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/:/soft/compilers/gcc/4.8.4/lib/gcc/:/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/../../../../powerpc64-bgq-linux/lib/:\$LD_LIBRARY_PATH --exe ~/altbuild/BuildProducts/bin/TBBDemo --args ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${nThreads}.${nSimulEvt}.${iterations}.config >>runjob-driver-${nSimulEvt}.sh
+#iterations+=${step}
 nSimulEvt+=${ncore}
+#nThreads+=${ncore}
 done
