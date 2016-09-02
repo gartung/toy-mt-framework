@@ -3,17 +3,17 @@
 declare -i stepsize
 stepsize=64
 declare -i nsteps
-nsteps=20
+nsteps=32
 declare -i iterations
 iterations=1000
 declare -i ncore
-ncore=4
+ncore=2
 declare -i nSimulEvt
 nSimulEvt=ncore
 declare -i nThreads
 nThreads=64
 declare -i busyWaitScaleFactor
-busyWaitScaleFactor=2080000
+busyWaitScaleFactor=27766600
 
 #echo "#!/bin/sh" >driver.sh
 #echo "#!/bin/sh" >runjob-driver.sh
@@ -28,7 +28,9 @@ echo "#SBATCH -L SCRATCH " >>srun-driver.sh
 
 for ((x=1;x<=${nsteps};x+=1)); do
 echo $x
-   cat >reco_hipileup_5_2_0_busywait_perfectIO.${nThreads}.${nSimulEvt}.${iterations}.config <<EOF
+nSimulEvtP=`printf "%02d" $nSimulEvt`
+nThreadsP=`printf "%02d" $nThreads`
+   cat >reco_hipileup_5_2_0_busywait_perfectIO.${nSimulEvtP}s.${nThreadsP}t.${iterations}i.config <<EOF
 {"process": {"filters": [{"@label": "outputRECO",
                           "@type": "demo::EventTimesBusyWaitPassFilter",
                           "eventTimes": [0.587947,
@@ -1150,7 +1152,7 @@ echo $x
                                      "product": ""}]}
 ],
              "label": "TEST",
-             "options": {"busyWaitScaleFactor": 2080000.0,
+             "options": {"busyWaitScaleFactor": ${busyWaitScaleFactor}.0,
                          "nSimultaneousEvents": ${nSimulEvt},
                          "nThreads": ${nThreads} },
              "paths": {"oRECO": ["outputRECO"], 
@@ -53791,11 +53793,9 @@ echo $x
                             "toGet": []}],
              "source": {"@type": "demo::SimpleSource", "iterations": ${iterations} }}}
 EOF
-#echo qsub -n 1 --mode c1  -t 120 --env LD_LIBRARY_PATH=/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/:/soft/compilers/gcc/4.8.4/lib/gcc/:/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/../../../../powerpc64-bgq-linux/lib/:\$LD_LIBRARY_PATH ~/altbuild/BuildProducts/bin/TBBDemo ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${x}.config >>driver.sh
-#echo runjob -p1  --block \$COBALT_PARTNAME --verbose=DEBUG --envs LD_LIBRARY_PATH=/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/:/soft/compilers/gcc/4.8.4/lib/gcc/:/soft/compilers/gcc/4.8.4/lib/gcc/powerpc64-bgq-linux/4.8.4/../../../../powerpc64-bgq-linux/lib/:\$LD_LIBRARY_PATH --exe ~/altbuild/BuildProducts/bin/TBBDemo --args ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${x}.config >>runjob-driver.sh
-echo srun -n 1 -c 64 /global/homes/g/gartung/build/BuildProducts/bin/TBBDemo /global/homes/g/gartung/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${x}.config >>srun-driver.sh
+echo srun -n 1 -c 64 /global/homes/g/gartung/build/BuildProducts/bin/TBBDemo /global/homes/g/gartung/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${nSimulEvtP}s.${nThreadsP}t.${iterations}i.config >>srun-driver.sh
 
-iterations+=${step}
+#iterations+=${step}
 nSimulEvt+=${ncore}
-nThreads+=${ncore}
+#nThreads+=${ncore}
 done
