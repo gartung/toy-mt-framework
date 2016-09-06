@@ -19,12 +19,11 @@ echo "#!/bin/sh" >driver.sh
 
 
 
-for ((x==ncore;x<$nsteps;x+=ncore)); do
-    #iterations+=${step}
-    nSimulEvt+=${ncore}
+for ((x=8;x<=256;x+=8)); do
+    nSimulEvt=${x}
     nSimulEvtP=`printf "%03d\n" $nSimulEvt`
     echo $nSimulEvtP
-    scale=1.3
+    scale=1
     nThreads=`echo "($scale * $nSimulEvt)/1" | bc`
     nThreadsP=`printf "%03d\n" $nThreads`
     echo $nThreadsP

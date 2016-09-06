@@ -3,39 +3,58 @@
 declare -i stepsize
 stepsize=64
 declare -i nsteps
-nsteps=32
+nsteps=256
 declare -i iterations
-iterations=100
+iterations=1000
 declare -i ncore
-ncore=64
+ncore=8
 declare -i nSimulEvt
-nSimulEvt=1
+nSimulEvt=0
 declare -i nThreads
-nThreads=1
-#nThreads=64
+nThreads=0
 declare -i busyWaitScaleFactor
-busyWaitScaleFactor=423729000
+busyWaitScaleFactor=9700000
 
-#echo "#!/bin/sh" >driver.sh
-#echo "#!/bin/sh" >runjob-driver.sh
-#echo "#!/bin/sh" >srun-driver.sh
-#echo "#!/bin/bash -l     "  >srun-driver.sh  
-#echo "                   " >>srun-driver.sh
-#echo "#SBATCH -p debug " >>srun-driver.sh   
-#echo "#SBATCH -N 1      " >>srun-driver.sh   
-#echo "#SBATCH -t 00:20:00" >>srun-driver.sh  
-#echo "#SBATCH -J my_job  " >>srun-driver.sh   
-#echo "#SBATCH -L SCRATCH " >>srun-driver.sh
+echo "#!/bin/sh" >driver.sh
 
-   nSimulEvtP=`printf "%02d" $nSimulEvt`
-   nThreadsP=`printf "%02d" $nThreads`
-   echo "#!/bin/bash -l     "  >srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh  
-   echo "                   " >>srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh
-   echo "#SBATCH -p regular "   >>srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh   
-   echo "#SBATCH -N 1      "  >>srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh   
-   echo "#SBATCH -t 02:00:00" >>srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh  
-   echo "#SBATCH -J my_job  " >>srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh   
-   echo "#SBATCH -L SCRATCH " >>srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh
+
+
+for ((x=8;x<=256;x+=8)); do
+    nSimulEvt=${x}
+    nSimulEvtP=`printf "%03d\n" $nSimulEvt`
+    echo $nSimulEvtP
+    scale=1
+    nThreads=256
+    nThreadsP=`printf "%03d\n" $nThreads`
+    echo $nThreadsP
+    echo qsub -q knl -l nodes=1:knl,walltime=12:00:00 -A usertest ~/toy-mt-framework/cms-data/driver-${nSimulEvtP}s-${nThreadsP}t.sh >>driver.sh
+
+    echo "#!/bin/sh" >driver-${nSimulEvt}s-${nThreadsP}t.sh
+    echo source /opt/intel/parallel_studio_xe_2016.3.067/psxevars.sh intel64 >>driver-${nSimulEvtP}s-${nThreadsP}t.sh
+    echo ~/build/BuildProducts/bin/TBBDemo ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${nSimulEvtP}s.${nThreadsP}t.${iterations}i.config \> job-${iterations}i-${nSimulEvtP}s-${nThreadsP}t.log.txt 2\>\&1  >>driver-${nSimulEvtP}s-${nThreadsP}t.sh
+
+#    echo "#!/bin/sh" >driver-$x.sh
+#    echo ids[$x]=\$\! >>driver-$x.sh
+#    cat >> driver-$x.sh << EOF
+#tim=0
+#live=1
+#while [ \$live -eq 1 ]; do
+#   let tim=\$tim+100
+#   live=0
+#   sleep 100
+#   for ((x=1;x<=$y;x+=1)); do
+#      if ps -p \${ids[\$x]}> /dev/null 2>&1
+#      then
+#         if [ \$tim -gt 720000 ] ; then
+#            kill \${ids[\$x]}
+#            echo "APPLICATION RAN OUT OF TIME"
+#         else
+#            live=1
+#         fi
+#      fi
+#   done
+#done
+#EOF
 
    cat >reco_hipileup_5_2_0_busywait_perfectIO.${nSimulEvtP}s.${nThreadsP}t.${iterations}i.config <<EOF
 {"process": {"filters": [{"@label": "outputRECO",
@@ -53800,41 +53819,5 @@ busyWaitScaleFactor=423729000
                             "toGet": []}],
              "source": {"@type": "demo::SimpleSource", "iterations": ${iterations} }}}
 EOF
-
-for ((x=2;x<=64;x+=2)); do
-   echo "#!/bin/bash -l     "  >srun-driver-${x}.sh  
-   echo "                   " >>srun-driver-${x}.sh
-   echo "#SBATCH -p regular " >>srun-driver-${x}.sh   
-   echo "#SBATCH -N 1      "  >>srun-driver-${x}.sh   
-   echo "#SBATCH -t 02:00:00" >>srun-driver-${x}.sh  
-   echo "#SBATCH -J my_job  " >>srun-driver-${x}.sh   
-   echo "#SBATCH -L SCRATCH " >>srun-driver-${x}.sh
-   echo "srun $PWD/driver-$x.sh" >>srun-driver-${x}.sh
-  echo "#!/bin/bash" >driver-$x.sh
-  for ((y=1;y<=${x};y+=1));do
-    echo /global/homes/g/gartung/build/BuildProducts/bin/TBBDemo /global/homes/g/gartung/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${nSimulEvtP}s.${nThreadsP}t.${iterations}i.config \>$x-$y.log 2\>\&1\& >>driver-$x.sh
-    echo ids[$y]=\$\! >>driver-$x.sh
-    done
-  cat >> driver-$x.sh << EOF
-    tim=0
-    live=1
-    while [ \$live -eq 1 ]; do
-       let tim=\$tim+100
-       live=0
-       sleep 100
-       for ((x=1;x<$y;x+=1)); do
-          if ps -p \${ids[\$x]}> /dev/null 2>&1
-          then
-             if [ \$tim -gt 720000 ] ; then
-                kill \${ids[\$x]}
-                echo "APPLICATION RAN OUT OF TIME"
-             else
-                live=1
-             fi
-          fi
-       done
-    done
-EOF
-chmod +x driver-$x.sh
 
 done
