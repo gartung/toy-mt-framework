@@ -11,7 +11,8 @@ ncore=2
 declare -i nSimulEvt
 nSimulEvt=4
 declare -i nThreads
-nThreads=4
+nThreads=64
+#nThreads=2
 declare -i busyWaitScaleFactor
 busyWaitScaleFactor=423729000
 #echo "#!/bin/sh" >driver.sh
@@ -53796,5 +53797,5 @@ EOF
 echo srun -n 1 -c 64 /global/homes/g/gartung/build/BuildProducts/bin/TBBDemo /global/homes/g/gartung/toy-mt-framework/cms-data/reco_hipileup_5_2_0_busywait_perfectIO.${nSimulEvtP}s.${nThreadsP}t.${iterations}i.config >>srun-driver-${nSimulEvtP}s.${nThreadsP}t.${iterations}i.sh
 
 nSimulEvt+=${ncore}
-nThreads+=${ncore}
+#nThreads+=${ncore}
 done
