@@ -13,7 +13,7 @@ nSimulEvt=4
 declare -i nThreads
 nThreads=4
 declare -i busyWaitScaleFactor
-busyWaitScaleFactor=4.23729e+08
+busyWaitScaleFactor=25000000
 
 for ((x=1;x<${nsteps};x+=1)); do
 echo $x

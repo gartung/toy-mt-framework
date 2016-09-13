@@ -13,7 +13,7 @@ nSimulEvt=4
 declare -i nThreads
 nThreads=64
 #nThreads=2
-busyWaitScaleFactor=4.23729e+08
+busyWaitScaleFactor=25000000
 #echo "#!/bin/sh" >driver.sh
 #echo "#!/bin/sh" >runjob-driver.sh
 #echo "#!/bin/sh" >srun-driver.sh

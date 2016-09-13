@@ -13,7 +13,7 @@ nSimulEvt=1
 declare -i nThreads
 nThreads=1
 #nThreads=64
-busyWaitScaleFactor=4.23729e+08
+busyWaitScaleFactor=25000000
 
 
 nSimulEvtP=`printf "%02d" $nSimulEvt`
