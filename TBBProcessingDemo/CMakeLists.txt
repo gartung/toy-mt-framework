@@ -92,7 +92,7 @@ if(CPPUNIT_FOUND)
 endif()
 
 add_executable(TBBDemo main.cpp)
-target_link_libraries(TBBDemo TBBFrameworkCore TBBTestModules ${TBB_LIBRARY})
+target_link_libraries(TBBDemo TBBFrameworkCore TBBTestModules ${TBB_LIBRARIES})
 
 install(TARGETS TBBDemo TBBFrameworkCore TBBTestModules 
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

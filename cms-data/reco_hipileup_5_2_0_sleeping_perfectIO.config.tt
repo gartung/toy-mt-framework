@@ -1119,9 +1119,9 @@
                                      "product": ""}]}
 ],
              "label": "TEST",
-             "options": {"busyWaitScaleFactor": 22000000.0,
-                         "nSimultaneousEvents": 64,
-                         "nThreads": 64},
+             "options": {"busyWaitScaleFactor": $busyWaitScaleFactor.0,
+                         "nSimultaneousEvents": $nThreads,
+                         "nThreads": $nThreads },
              "paths": {"oRECO": ["outputRECO"], 
                        "oAOD": ["outputAOD"] },
              "producers": [{"@label": "elPFIsoDepositGamma",
@@ -53758,5 +53758,5 @@
                                            0.00077414499999999995],
                             "threadType": "ThreadSafeBetweenInstances",
                             "toGet": []}],
-             "source": {"@type": "demo::SimpleSource", "iterations": 200}}}
+             "source": {"@type": "demo::SimpleSource", "iterations": $iterations }}}
 
