@@ -15,39 +15,20 @@ nThreads=1
 declare -i busyWaitScaleFactor
 busyWaitScaleFactor=9700000
 
-sed -e "s/\$iterations/$iterations/" -e "s/\$nSimulEvt/$nSimulEvt/" -e "s/\$nThreads/$nThreads/" -e "s/\$busyWaitScaleFactor/$busyWaitScaleFactor/"  reco_hipileup_5_2_0_sleeping_perfectIO.config.tt >reco_hipileup_5_2_0_sleeping_perfectIO.${nSimulEvtP}s.${nThreadsP}t.${iterations}i.config
+sed -e "s/\$iterations/$iterations/" -e "s/\$nSimulEvt/$nSimulEvt/" -e "s/\$nThreads/$nThreads/" -e "s/\$busyWaitScaleFactor/$busyWaitScaleFactor/"  reco_hipileup_5_2_0_sleeping_perfectIO.config.tt >reco_hipileup_5_2_0_sleeping_perfectIO.${nSimulEvt}s.${nThreads}t.${iterations}i.config
 
-echo "#!/bin/sh" >driver-sleeping.sh
+echo "#" >driver-sleeping-single.sh
 for ((x=8;x<=256;x+=8)); do
     echo $x
-    echo "qsub -q knl -l nodes=1:knl,walltime=12:00:00 -A usertest ~/toy-mt-framework/cms-data/driver-sleeping-${x}.sh" >>driver-sleeping.sh
+    echo "qsub -q knl -l nodes=1:knl,walltime=12:00:00 -A usertest ~/toy-mt-framework/cms-data/driver-sleeping-${x}.sh" >>driver-sleeping-single.sh
     
-    echo "#!/bin/sh" >driver-sleeping-${x}.sh
+    echo "#!/bin/bash" >driver-sleeping-${x}.sh
     echo "source /opt/intel/parallel_studio_xe_2016.3.067/psxevars.sh intel64">>driver-sleeping-${x}.sh
+    echo "numactl -m 1" >> driver-sleeping-${x}.sh
+    echo "export export KMP_PLACE_THREADS=1s,64c,4t" >> driver-sleeping-${x}.sh
 
 for ((y=1;y<=$x;y+=1));do
-    echo "~/build/BuildProducts/bin/TBBDemo ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_sleeping_perfectIO.${nSimulEvt}s.${nThreads}t.${iterations}i.config \> job-${x}-${y}.log.txt 2\>\&1\&">>driver-sleeping-$x.sh
-    echo "ids[$x]=\$\!">>driver-sleeping-$x.sh
-done
-    cat >> driver-sleeping-$x.sh << EOF
-tim=0
-live=1
-while [ \$live -eq 1 ]; do
-   let tim=\$tim+100
-   live=0
-   sleep 100
-   for ((x=1;x<$y;x+=1)); do
-      if ps -p \${ids[\$x]}> /dev/null 2>&1
-      then
-         if [ \$tim -gt 720000 ] ; then
-            kill \${ids[\$x]}
-            echo "APPLICATION RAN OUT OF TIME"
-         else
-            live=1
-         fi
-      fi
-   done
-done
-EOF
-
+    echo "~/build/BuildProducts/bin/TBBDemo ~/toy-mt-framework/cms-data/reco_hipileup_5_2_0_sleeping_perfectIO.${nSimulEvt}s.${nThreads}t.${iterations}i.config > job-${x}-${y}.log.txt 2>&1&">>driver-sleeping-$x.sh
+    done
+echo "wait">>driver-sleeping-$x.sh
 done
