@@ -17,7 +17,6 @@ int main (int argc, const char * argv[])
   calibrate(10000000);
   calibrate(100000000);
   calibrate(1000000000);
-  calibrate(10000000000);
   return 0;
 }
 

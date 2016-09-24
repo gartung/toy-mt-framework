@@ -1120,7 +1120,7 @@
 ],
              "label": "TEST",
              "options": {"busyWaitScaleFactor": $busyWaitScaleFactor.0,
-                         "nSimultaneousEvents": $nThreads,
+                         "nSimultaneousEvents": $nSimulEvt,
                          "nThreads": $nThreads },
              "paths": {"oRECO": ["outputRECO"], 
                        "oAOD": ["outputAOD"] },
