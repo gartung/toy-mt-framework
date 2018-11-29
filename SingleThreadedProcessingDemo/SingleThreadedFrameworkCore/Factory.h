@@ -9,6 +9,7 @@
 #ifndef DispatchProcessingDemo_Factory_h
 #define DispatchProcessingDemo_Factory_h
 #include <boost/property_tree/ptree.hpp>
+#include <memory>
 
 namespace demo {
   template <typename T>
@@ -26,7 +27,7 @@ namespace demo {
     Factory() {}
     
     virtual std::unique_ptr<T> create(const boost::property_tree::ptree& iPTree) const {
-      return std::unique_ptr<T>(new U(iPTree) );
+      return std::make_unique<U>(iPTree);
     }
   };
 }

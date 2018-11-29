@@ -11,7 +11,7 @@
 #include <vector>
 #include <string>
 #include <atomic>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Path.h"
 #include "Event.h"
 
@@ -20,6 +20,7 @@ namespace demo {
   class Event;
   class Filter;
   class FilterWrapper;
+  class WaitingTaskHolder;
   
   class Schedule {
   public:
@@ -27,8 +28,7 @@ namespace demo {
     Schedule();
     Schedule(const Schedule&);
     
-    //returns true if should keep processing
-    bool process();
+    void processAsync(WaitingTaskHolder);
 
     void reset();
     
@@ -45,14 +45,13 @@ namespace demo {
     Schedule* clone();
     
   private:
-    void processPresentPath(Path*);
 
     //used for cloning
     Schedule(Event*);
     void addPath(Path* iPath);
     Event m_event;
-    std::vector<boost::shared_ptr<Path>> m_paths;
-    std::vector<boost::shared_ptr<FilterWrapper> > m_filters;
+    std::vector<std::shared_ptr<Path>> m_paths;
+    std::vector<std::shared_ptr<FilterWrapper> > m_filters;
     std::atomic<bool>* m_fatalJobErrorOccuredPtr;
   };
 }

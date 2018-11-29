@@ -8,60 +8,70 @@
 
 #include <iostream>
 
-#include <assert.h>
+#include <cassert>
+#include <memory>
 #include "Path.h"
 #include "FilterWrapper.h"
 
 
 using namespace demo;
 
-void Path::runAsync(PathFilteringCallback iCallback) {
-  m_callback = iCallback;
+void Path::runAsync(WaitingTask* iCallback) {
+  m_callback.reset();
+  m_callback.add(iCallback);
   if(!m_filters.empty()) {
     runFilterAsync(0);
   } else {
-    m_callback(std::exception_ptr{});
+    m_callback.doneWaiting(std::exception_ptr{});
   }
 }
 
 
-void Path::doNextIfSuccess(bool iKeep, std::exception_ptr iException, size_t iPreviousIndex) {
-  if(not iException && not *m_fatalJobErrorOccurredPtr && iKeep && iPreviousIndex+1 < m_filters.size()) {
+void Path::filterFinished(std::exception_ptr const* iException, size_t iPreviousIndex) {
+  if(not iException && not *m_fatalJobErrorOccurredPtr && m_filters[iPreviousIndex].checkResultsOfRunFilter() && iPreviousIndex+1 < m_filters.size()) {
     //go to next
     runFilterAsync(iPreviousIndex+1);
   } else {
     //finished path without an error
-    m_callback(iException);
+    std::exception_ptr ptr;
+    if(iException) {
+      ptr = *iException;
+    }
+    m_callback.doneWaiting(ptr);
   }  
 }
   
 void Path::runFilterAsync(size_t iIndex) {
   if (*m_fatalJobErrorOccurredPtr) {
     //There must have been a fatal problem on another path
-    m_callback(std::exception_ptr{});
+    m_callback.doneWaiting(std::exception_ptr{});
     return;
   }
-    
-  m_filters[iIndex].filterAsync();
+  auto nextTask = make_waiting_task(tbb::task::allocate_root(),
+                                    [this, iIndex](std::exception_ptr const* iPtr) 
+  {
+    this->filterFinished(iPtr, iIndex);
+  });
+  m_filters[iIndex].filterAsync(nextTask);
 }
   
 void Path::reset() {
 }
   
 void Path::addFilter(FilterWrapper* iFilter,Event*iEvent) {
-  m_filters.push_back(FilterOnPathWrapper(iFilter,this,m_filters.size()));
+  m_filters.emplace_back(iFilter,m_filters.size());
 }
 
   
 Path* Path::clone(const std::vector<std::shared_ptr<FilterWrapper> >& iWrappers, Event*iEvent) const {
-  std::unique_ptr<Path> newPath(new Path);
+  auto newPath = std::make_unique<Path>();
   newPath->m_filters.reserve(m_filters.size());
   for (const auto& fw: m_filters) {
     bool found = false;
     for(auto newFw: iWrappers) {
       if(newFw->label() == fw.label()) {
         found = true;
-        newPath->m_filters.push_back(FilterOnPathWrapper(newFw.get(),newPath.get(),newPath->m_filters.size()));
+        newPath->m_filters.emplace_back(newFw.get(),newPath->m_filters.size());
         break;
       }
     }

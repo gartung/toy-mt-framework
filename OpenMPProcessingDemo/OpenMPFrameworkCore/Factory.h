@@ -9,6 +9,7 @@
 #ifndef DispatchProcessingDemo_Factory_h
 #define DispatchProcessingDemo_Factory_h
 #include <boost/property_tree/ptree.hpp>
+#include <memory>
 
 namespace demo {
   template <typename T>

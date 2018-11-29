@@ -8,11 +8,12 @@
 
 #include <iostream>
 
-#include <assert.h>
+#include <cassert>
 
 #include "Schedule.h"
 #include "Path.h"
 #include "FilterWrapper.h"
+#include "WaitingTaskHolder.h"
 
 using namespace demo;
 
@@ -33,55 +34,56 @@ m_event(iOther.m_event),
 m_fatalJobErrorOccuredPtr(iOther.m_fatalJobErrorOccuredPtr)
 {
   m_filters.reserve(iOther.m_filters.size());
-  for(boost::shared_ptr<FilterWrapper> fw: iOther.m_filters) {
-    m_filters.push_back(boost::shared_ptr<FilterWrapper>(new FilterWrapper(fw.get())));
+  for(auto fw: iOther.m_filters) {
+    m_filters.push_back(std::make_shared<FilterWrapper>(*fw,&m_event));
   }
   
-  for(std::vector<boost::shared_ptr<Path>>::const_iterator it = iOther.m_paths.begin(), itEnd = iOther.m_paths.end();
-      it != itEnd;
-      ++it) {
-    addPath((*it)->clone(m_filters));
+  m_paths.reserve(iOther.m_paths.size());
+  for(auto& itPath : iOther.m_paths) {
+    addPath(itPath->clone(m_filters,&m_event));
   }
 }
 
-bool
-Schedule::process() {
+void 
+Schedule::processAsync(WaitingTaskHolder iCallback) {
   //printf("Schedule::process\n");
   reset();
+
   if(!m_paths.empty()) {
-    for(auto it = m_paths.begin(), itEnd = m_paths.end(); 
-	it != itEnd; ++it) {
-    auto temp = it->get();
-#if defined(PARALLEL_MODULES)
-#pragma omp task untied default(shared) firstprivate(temp)
-    {
-    assert(temp);
-#endif
-      processPresentPath(temp);
+
+    auto allPathsDone = make_waiting_task(
+                                          [this, h=std::move(iCallback)](std::exception_ptr* const iExcept) mutable
+                                          {
+                                            if(iExcept) {
+                                              *(m_fatalJobErrorOccuredPtr) = true;
+                                              h.doneWaiting(*iExcept);
+                                            } else {
+                                              h.doneWaiting(std::exception_ptr{});
+                                            }
+                                          });
+    WaitingTaskHolder tmp(std::move(allPathsDone));
+     
+    for(auto& path : m_paths) {
+      path->runAsync( tmp );
     }
-#if defined(PARALLEL_MODULES)
-    }
-#pragma omp taskwait
-#endif
-    return not *m_fatalJobErrorOccuredPtr;
   } else {
-    return true;
+    iCallback.doneWaiting(std::exception_ptr{});
   }
 }
 
 void 
 Schedule::addPath(Path* iPath) {
-  m_paths.push_back(boost::shared_ptr<Path>(iPath));
+  m_paths.push_back(std::shared_ptr<Path>(iPath));
   iPath->setFatalJobErrorOccurredPointer(m_fatalJobErrorOccuredPtr);
 }
 
 void
 Schedule::addPath(const std::vector<std::string>& iPath) {
-  std::unique_ptr<Path> newPath(new Path);
-  for(const std::string& name: iPath) {
+  auto newPath = std::make_unique<Path>();
+  for(const auto& name: iPath) {
     FilterWrapper* fw = findFilter(name);
     if(0!=fw) {
-      newPath->addFilter(fw);
+      newPath->addFilter(fw,&m_event);
     } else {
       assert(0=="Failed to find filter name");
       exit(1);
@@ -92,7 +94,7 @@ Schedule::addPath(const std::vector<std::string>& iPath) {
 
 void
 Schedule::addFilter(Filter* iFilter) {
-  m_filters.push_back(boost::shared_ptr<FilterWrapper>(new FilterWrapper(boost::shared_ptr<Filter>(iFilter))));
+  m_filters.push_back(std::make_shared<FilterWrapper>(std::shared_ptr<Filter>(iFilter),&m_event));
 }
 
 void 
@@ -113,7 +115,7 @@ Schedule::event()
 
 FilterWrapper*
 Schedule::findFilter(const std::string& iLabel){
-  for(boost::shared_ptr<FilterWrapper> fw: m_filters) {
+  for(auto fw: m_filters) {
     if (fw->label() == iLabel) {
       return fw.get();
     }
@@ -127,10 +129,3 @@ Schedule::clone() {
 }
 
 
-void 
-Schedule::processPresentPath(Path* iPath) {
-  if(*m_fatalJobErrorOccuredPtr) {
-    return;
-  }
-  iPath->run(m_event);
-}

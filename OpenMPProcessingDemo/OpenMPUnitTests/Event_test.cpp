@@ -11,9 +11,12 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <unistd.h>
 #include <memory>
+#include <atomic>
+//#include <iostream>
 #include "Event.h"
 #include "Producer.h"
-#include <dispatch/dispatch.h>
+#include "SerialTaskQueue.h"
+#include "TaskBase.h"
 
 class Event_test : public CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE(Event_test);
@@ -26,7 +29,7 @@ class Event_test : public CppUnit::TestFixture {
   CPPUNIT_TEST(simultaneousThreadUnsafeOneEvent);
   CPPUNIT_TEST(simultaneousBetweenInstancesTwoEvents);
   CPPUNIT_TEST(simultaneousBetweenModulesTwoEvents);
-  CPPUNIT_TEST(simultaneousThreadUnsafeTwoEvents);
+  CPPUNIT_TEST(simultaneousThreadUnsafeTwoEvents); 
   CPPUNIT_TEST_SUITE_END();
   
 public:
@@ -55,6 +58,7 @@ namespace  {
     }
   private:
     virtual void produce(demo::edm::Event& iEvent) {
+      //std::cerr <<"ValueProd::produce "<<m_value<<" called\n";
       iEvent.put(this, m_product, m_value);
     }
     std::string m_product;
@@ -78,6 +82,7 @@ namespace  {
       for(const demo::Getter* g: m_getters) {
         value += iEvent.get(g);
       }
+      //std::cerr <<"SumGetterProd::produce "<<value<<" called\n";
       iEvent.put(this, m_product, value);
     }
     std::string m_product;
@@ -91,14 +96,18 @@ namespace  {
     m_product(iProduct),
     m_toGet(iToGet)
     {
+      for(const std::pair<std::string,std::string>& g: m_toGet) {
+        registerGet(g.first,g.second);
+      }
       registerProduct(demo::DataKey(iProduct));
     }
   private:
-    virtual void produce(demo::edm::Event& iEvent) {
+    void produce(demo::edm::Event& iEvent) final {
       int value = 0;
       for(const std::pair<std::string,std::string>& g: m_toGet) {
         value += iEvent.get(g.first,g.second);
       }
+      //std::cerr <<"SumSyncProd::produce "<<value<<" called\n";
       iEvent.put(this, m_product, value);
     }
     std::string m_product;
@@ -108,52 +117,26 @@ namespace  {
   class ThreadSafeCounter {
   public:
     ThreadSafeCounter(const char* iName):
-    m_count(0),
-    m_queue(dispatch_queue_create(iName,NULL)) {
-      //dispatch_retain(m_queue);
-    }
+    m_count(0){}
     
     int increment() {
-      int v = 0;
-      Context c(m_count,v);
-      dispatch_sync_f(m_queue, &c, ThreadSafeCounter::increment_task);
-      return v;
+       return ++m_count;
     }
     
     int value() {
-      int v=0;
-      Context c(m_count,v);
-      dispatch_sync_f(m_queue,&c,ThreadSafeCounter::value_task);
-      return v;
+       return m_count;
     }
     
     ~ThreadSafeCounter() {
-      dispatch_release(m_queue);
     }
   private:
     
-    struct Context {
-      Context(int& iCount, int& iValue):
-      count(&iCount), value(&iValue) {}
-      int* count;
-      int* value;
-    };
-    static void increment_task(void* iContext) {
-      Context* c = reinterpret_cast<Context*>(iContext);
-      *(c->value) = ++(*c->count);
-    };
-    static void value_task(void* iContext) {
-      Context* c = reinterpret_cast<Context*>(iContext);
-      *(c->value) = (*c->count);
-    };
-    
-    int m_count;
-    dispatch_queue_t m_queue;
+    std::atomic<int> m_count;
   };
 
   class AccessTestingProd : public demo::Producer {
   public:
-    AccessTestingProd(const std::string& iLabel, const std::string& iProduct, demo::ThreadType iThreadType, ThreadSafeCounter& iCounter, bool& iWasChanged):
+    AccessTestingProd(const std::string& iLabel, const std::string& iProduct, demo::ThreadType iThreadType, ThreadSafeCounter& iCounter, std::atomic<bool>& iWasChanged):
     Producer(iLabel,iThreadType),
     m_product(iProduct),
     m_counter(&iCounter),
@@ -162,8 +145,10 @@ namespace  {
     }
   private:
     virtual void produce(demo::edm::Event& iEvent) {
+      //std::cerr <<"AccessTestingProd "<<label()<<" called\n";
       int newV = m_counter->increment();
       sleep(1);
+      //std::cerr <<"AccessTestingProd "<<label()<<" woke\n";
       if(newV != m_counter->value()) {
         *m_wasChanged =true;
       }
@@ -171,8 +156,25 @@ namespace  {
     }
     std::string m_product;
     ThreadSafeCounter* m_counter;
-    bool* m_wasChanged;
+    std::atomic<bool>* m_wasChanged;
   };
+}
+
+namespace {
+  template<typename F>
+  void run_tasks_and_wait(F iF) {
+    iF();
+    /*
+#pragma omp parallel default(shared)
+    {
+#pragma omp single
+      {
+        iF();
+      }
+    }
+    */
+
+  }
 }
 
 void Event_test::getSyncDirect()
@@ -186,11 +188,13 @@ void Event_test::getSyncDirect()
   CPPUNIT_ASSERT(event.index()==1);
   
   event.addProducer(one);
+  two->setID(1);
   event.addProducer(two);
   
-  CPPUNIT_ASSERT(event.get("one","one")==1);
-  CPPUNIT_ASSERT(event.get("two","two")==2);
-  
+  run_tasks_and_wait([&] {
+      CPPUNIT_ASSERT(event.get("one","one")==1);
+      CPPUNIT_ASSERT(event.get("two","two")==2);
+    });
 }
 
 void Event_test::getSyncIndirect()
@@ -209,11 +213,17 @@ void Event_test::getSyncIndirect()
   CPPUNIT_ASSERT(event.index()==1);
   
   event.addProducer(one);
+  two->setID(1);
   event.addProducer(two);
+  sum->setID(2);
   event.addProducer(sum);
-  
-  CPPUNIT_ASSERT(event.get("sum","")==3);
-  
+
+  //std::cerr <<"getSyncIndirect start \n";
+  run_tasks_and_wait([&] {
+      CPPUNIT_ASSERT(event.get("sum","")==3);
+    });
+  //std::cerr <<"getSyncIndirect end \n";
+
 }
 
 void Event_test::getSyncIndirectWithGetter()
@@ -232,17 +242,20 @@ void Event_test::getSyncIndirectWithGetter()
   CPPUNIT_ASSERT(event.index()==1);
   
   event.addProducer(one);
+  two->setID(1);
   event.addProducer(two);
+  sum->setID(2);
   event.addProducer(sum);
-  
-  CPPUNIT_ASSERT(event.get("sum","")==3);
-  
+
+  run_tasks_and_wait([&] {
+      CPPUNIT_ASSERT(event.get("sum","")==3);
+    });
 }
 
 void Event_test::callOnce()
 {
   ThreadSafeCounter count("gov.fnal.counter");
-  bool wasChanged=false;
+  std::atomic<bool> wasChanged{false};
   
   AccessTestingProd* at(new AccessTestingProd("access","",demo::kThreadSafeBetweenInstances,count,wasChanged));
   std::vector<std::pair<std::string, std::string> > toGet;
@@ -259,11 +272,15 @@ void Event_test::callOnce()
   event.setIndex(1);
   
   event.addProducer(at);
+  sum1->setID(1);
   event.addProducer(sum1);
+  sum2->setID(2);
   event.addProducer(sum2);
+  sum3->setID(3);
   event.addProducer(sum3);
-  
-  CPPUNIT_ASSERT(event.get("sum3","")==2);
+  run_tasks_and_wait([&] {
+      CPPUNIT_ASSERT(event.get("sum3","")==2);
+    });
   CPPUNIT_ASSERT(count.value()==1);
   CPPUNIT_ASSERT(wasChanged==false);
 }
@@ -271,7 +288,7 @@ void Event_test::callOnce()
 void Event_test::simultaneousBetweenInstancesOneEvent()
 {
   ThreadSafeCounter count("gov.fnal.counter");
-  bool wasChanged=false;
+  std::atomic<bool> wasChanged{false};
   
   AccessTestingProd* at1(new AccessTestingProd("access1","",demo::kThreadSafeBetweenInstances,count,wasChanged));
   AccessTestingProd* at2(new AccessTestingProd("access2","",demo::kThreadSafeBetweenInstances,count,wasChanged));
@@ -284,10 +301,14 @@ void Event_test::simultaneousBetweenInstancesOneEvent()
   event.setIndex(1);
   
   event.addProducer(at1);
+  at2->setID(1);
   event.addProducer(at2);
+  sum3->setID(2);
   event.addProducer(sum3);
   
-  CPPUNIT_ASSERT(event.get("sum3","")==2);
+  run_tasks_and_wait([&] {
+      CPPUNIT_ASSERT(event.get("sum3","")==2);
+    });
   CPPUNIT_ASSERT(count.value()==2);
   CPPUNIT_ASSERT(wasChanged==true);
 }
@@ -295,7 +316,7 @@ void Event_test::simultaneousBetweenInstancesOneEvent()
 void Event_test::simultaneousBetweenModulesOneEvent()
 {
   ThreadSafeCounter count("gov.fnal.counter");
-  bool wasChanged=false;
+  std::atomic<bool> wasChanged{false};
   
   AccessTestingProd* at1(new AccessTestingProd("access1","",demo::kThreadSafeBetweenModules,count,wasChanged));
   AccessTestingProd* at2(new AccessTestingProd("access2","",demo::kThreadSafeBetweenModules,count,wasChanged));
@@ -308,10 +329,14 @@ void Event_test::simultaneousBetweenModulesOneEvent()
   event.setIndex(1);
   
   event.addProducer(at1);
+  at2->setID(1);
   event.addProducer(at2);
+  sum3->setID(2);
   event.addProducer(sum3);
   
-  CPPUNIT_ASSERT(event.get("sum3","")==2);
+  run_tasks_and_wait([&] {
+      CPPUNIT_ASSERT(event.get("sum3","")==2);
+    });
   CPPUNIT_ASSERT(count.value()==2);
   CPPUNIT_ASSERT(wasChanged==true);
 }
@@ -319,7 +344,7 @@ void Event_test::simultaneousBetweenModulesOneEvent()
 void Event_test::simultaneousThreadUnsafeOneEvent()
 {
   ThreadSafeCounter count("gov.fnal.counter");
-  bool wasChanged=false;
+  std::atomic<bool> wasChanged{false};
   
   AccessTestingProd* at1(new AccessTestingProd("access1","",demo::kThreadUnsafe,count,wasChanged));
   AccessTestingProd* at2(new AccessTestingProd("access2","",demo::kThreadUnsafe,count,wasChanged));
@@ -332,24 +357,22 @@ void Event_test::simultaneousThreadUnsafeOneEvent()
   event.setIndex(1);
   
   event.addProducer(at1);
+  at2->setID(1);
   event.addProducer(at2);
+  sum3->setID(2);
   event.addProducer(sum3);
   
-  CPPUNIT_ASSERT(event.get("sum3","")==2);
+  run_tasks_and_wait([&] {
+      CPPUNIT_ASSERT(event.get("sum3","")==2);
+    });
   CPPUNIT_ASSERT(count.value()==2);
   CPPUNIT_ASSERT(wasChanged==false);
-}
-
-static void get_task(void* iContext, size_t iIndex) {
-  demo::Event** pEvents = reinterpret_cast<demo::Event**>(iContext);
-  pEvents[iIndex]->get("access",""); 
-
 }
 
 void Event_test::simultaneousBetweenInstancesTwoEvents()
 {
   ThreadSafeCounter count("gov.fnal.counter");
-  bool wasChanged=false;
+  std::atomic<bool> wasChanged{false};
   
   AccessTestingProd* at( new AccessTestingProd("access","",demo::kThreadSafeBetweenInstances,count,wasChanged));
   
@@ -362,9 +385,11 @@ void Event_test::simultaneousBetweenInstancesTwoEvents()
   event2->setIndex(2);
 
   const demo::Event* events[2]={&event1,event2.get()};
-  const demo::Event** pEvents=events;
-  
-  dispatch_apply_f(2, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, NULL), pEvents,get_task);
+
+#pragma omp parallel for default(shared)
+  for(int iIndex=0; iIndex<2;++iIndex) {
+     events[iIndex]->get("access","");
+  };
   CPPUNIT_ASSERT(count.value()==2);
   CPPUNIT_ASSERT(wasChanged==true);
 }
@@ -372,7 +397,7 @@ void Event_test::simultaneousBetweenInstancesTwoEvents()
 void Event_test::simultaneousBetweenModulesTwoEvents()
 {
   ThreadSafeCounter count("gov.fnal.counter");
-  bool wasChanged=false;
+  std::atomic<bool> wasChanged{false};
   
   AccessTestingProd* at(new AccessTestingProd("access","",demo::kThreadSafeBetweenModules,count,wasChanged));
   
@@ -384,9 +409,11 @@ void Event_test::simultaneousBetweenModulesTwoEvents()
   event2->setIndex(2);
 
   const demo::Event* events[2]={&event1,event2.get()};
-  const demo::Event** pEvents=events;
-  
-  dispatch_apply_f(2, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, NULL), pEvents,get_task);
+
+#pragma omp parallel for default(shared)
+  for(int iIndex=0; iIndex<2; ++iIndex) {
+     events[iIndex]->get("access","");
+  };
   CPPUNIT_ASSERT(count.value()==2);
   CPPUNIT_ASSERT(wasChanged==false);
 }
@@ -394,7 +421,7 @@ void Event_test::simultaneousBetweenModulesTwoEvents()
 void Event_test::simultaneousThreadUnsafeTwoEvents()
 {
   ThreadSafeCounter count("gov.fnal.counter");
-  bool wasChanged=false;
+  std::atomic<bool> wasChanged{false};
   
   AccessTestingProd* at(new AccessTestingProd("access","",demo::kThreadUnsafe,count,wasChanged));
   
@@ -406,9 +433,11 @@ void Event_test::simultaneousThreadUnsafeTwoEvents()
   event2->setIndex(4);
 
   const demo::Event* events[2]={&event1,event2.get()};
-  const demo::Event** pEvents=events;
-  
-  dispatch_apply_f(2, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, NULL), const_cast<demo::Event**>(pEvents),get_task);
+
+#pragma omp parallel for default(shared)
+  for(int iIndex=0; iIndex<2; ++iIndex) {
+     events[iIndex]->get("access","");
+  };
   CPPUNIT_ASSERT(count.value()==2);
   CPPUNIT_ASSERT(wasChanged==false);
 }
