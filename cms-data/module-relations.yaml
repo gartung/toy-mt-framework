@@ -1,0 +1,903 @@
+!!python/object/apply:collections.defaultdict {args: [!!python/name:__builtin__.list ''],
+  dictitems: {BeamHaloSummary: [CSCHaloData, EcalHaloData, HcalHaloData, GlobalHaloData],
+    CSCHaloData: [dt4DSegments, cscSegments, rpcRecHits, muonsFromCosmics, muons,
+      csc2DRecHits, muonCSCDigis, gtDigis, hbhereco, ecalRecHit], CastorTowerReco: [
+      castorreco], CosmicMuonSeed: [dt4DCosmicSegments, cscSegments], EcalHaloData: [
+      ecalRecHit, ecalPreshowerRecHit, hbhereco, correctedHybridSuperClusters], GlobalHaloData: [
+      towerMaker, caloMet, cscSegments, csc2DRecHits, muons, CSCHaloData, EcalHaloData,
+      HcalHaloData], HcalHaloData: [ecalRecHit, hbhereco, hfreco, towerMaker], JPTeidTight: [
+      gedGsfElectrons, offlinePrimaryVerticesWithBS], JetPlusTrackZSPCorJetAntiKt4: [
+      ak4JetTracksAssociatorAtVertexJPT, ak4JetTracksAssociatorAtCaloFace, muons,
+      offlinePrimaryVertices, gedGsfElectrons, JPTeidTight, ak4CaloJets], MeasurementTrackerEvent: [
+      siPixelDigis, siStripDigis, siStripClusters, siPixelClusters], MeasurementTrackerEventPreSplitting: [
+      siPixelDigis, siStripDigis, siStripClusters, siPixelClustersPreSplitting], PhotonIDProd: [
+      photons], PhotonIDProdGED: [gedPhotons], RECOoutput: [scalersRawToDigi, csc2DRecHits,
+      cscSegments, ctppsDiamondRawToDigi, ctppsDiamondLocalTracks, ctppsDiamondRecHits,
+      ctppsLocalTrackLiteProducer, ctppsPixelClusters, ctppsPixelDigis, ctppsPixelLocalTracks,
+      ctppsPixelRecHits, onlineMetaDataDigis, towerMaker, castorreco, clusterSummaryProducer,
+      dt4DCosmicSegments, dt4DSegments, dt1DCosmicRecHits, dt1DRecHits, siPixelDigis,
+      siStripDigis, selectDigi, ecalDigis, ecalPreshowerRecHit, ecalRecHit, reducedEcalRecHitsEB,
+      reducedEcalRecHitsEE, reducedEcalRecHitsES, ecalCompactTrigPrim, ecalTPSkim,
+      gemRecHits, gemSegments, gtStage2Digis, hbheprereco, hbhereco, reducedHcalRecHits,
+      hfprereco, hfreco, horeco, hcalnoise, castorDigis, hcalDigis, gctDigis, gtDigis,
+      rpcRecHits, siPixelClusters, siStripClusters, tcdsDigis, totemRPRawToDigi, totemRPClusterProducer,
+      totemRPLocalTrackFitter, totemRPRecHitProducer, totemRPUVPatternFinder, totemTimingRawToDigi,
+      totemTimingRecHits, totemTriggerRawToDigi, ckfInOutTracksFromConversions, ckfOutInTracksFromConversions,
+      conversionStepTracks, cosmicDCTracks, cosmicMuons, cosmicMuons1Leg, displacedGlobalMuons,
+      displacedStandAloneMuons, electronGsfTracks, generalTracks, globalMuons, refittedStandAloneMuons,
+      standAloneMuons, tevMuons, uncleanedOnlyCkfInOutTracksFromConversions, uncleanedOnlyCkfOutInTracksFromConversions,
+      CosmicMuonSeed, ancientMuonSeed, displacedMuonSeeds, zdcreco, PhotonIDProd,
+      PhotonIDProdGED, chargedHadronPFTrackIsolation, muons, ak4CaloJets, ak4PFJets,
+      ak4PFJetsCHS, ak4TrackJets, ak5CastorJets, ak7CastorJets, ak8PFJetsCHS, ak8PFJetsCHSSoftDrop,
+      cmsTopTagPFJetsCHS, fixedGridRhoAll, fixedGridRhoFastjetAll, fixedGridRhoFastjetAllCalo,
+      fixedGridRhoFastjetAllTmp, fixedGridRhoFastjetCentral, fixedGridRhoFastjetCentralCalo,
+      fixedGridRhoFastjetCentralChargedPileUp, fixedGridRhoFastjetCentralNeutral,
+      logErrorHarvester, TriggerResults, ak8PFJetsCHSSoftDropMass, eidLoose, eidRobustHighEnergy,
+      eidRobustLoose, eidRobustTight, eidTight, offlinePrimaryVertices, offlinePrimaryVerticesWithBS,
+      dedxHitInfo, l1extraParticles, caloStage2Digis, gmtStage2Digis, BeamHaloSummary,
+      offlineBeamSpot, CSCHaloData, particleFlowSuperClusterECAL, particleFlowSuperClusterOOTECAL,
+      hfEMClusters, hybridSuperClusters, multi5x5SuperClusters, particleFlowEGamma,
+      caloMet, caloMetBE, caloMetBEFO, caloMetM, softPFElectronsTagInfos, softPFMuonsTagInfos,
+      pfGhostTrackVertexTagInfos, pfInclusiveSecondaryVertexFinderCvsLTagInfos, pfInclusiveSecondaryVertexFinderTagInfos,
+      pfSecondaryVertexTagInfos, pfImpactParameterTagInfos, ak5CastorJetID, ak7CastorJetID,
+      CastorTowerReco, allConversions, conversions, uncleanedOnlyAllConversions, dedxHarmonic2,
+      dedxPixelHarmonic2, dedxTruncated40, EcalHaloData, electronMergedSeeds, GlobalHaloData,
+      gedGsfElectronCores, uncleanedOnlyGsfElectronCores, gedGsfElectrons, uncleanedOnlyGsfElectrons,
+      HcalHaloData, muIsoDepositCalByAssociatorTowers, muIsoDepositJets, muIsoDepositTk,
+      JetPlusTrackZSPCorJetAntiKt4, ak4JetID, pfChargeBJetTags, pfCombinedCvsBJetTags,
+      pfCombinedCvsLJetTags, pfCombinedInclusiveSecondaryVertexV2BJetTags, pfCombinedMVAV2BJetTags,
+      pfCombinedSecondaryVertexV2BJetTags, pfDeepCMVAJetTags, pfDeepCSVJetTags, pfGhostTrackBJetTags,
+      pfJetBProbabilityBJetTags, pfJetProbabilityBJetTags, pfSimpleInclusiveSecondaryVertexHighEffBJetTags,
+      pfSimpleSecondaryVertexHighEffBJetTags, pfTrackCountingHighEffBJetTags, softPFElectronBJetTags,
+      softPFMuonBJetTags, ak4JetExtender, ak4JetTracksAssociatorAtCaloFace, ak4JetTracksAssociatorAtVertex,
+      ak4JetTracksAssociatorAtVertexPF, ak4JetTracksAssociatorExplicit, muonMETValueMapProducer,
+      muonsFromCosmics, muonsFromCosmics1Leg, particleFlowBlock, particleFlowPtrs,
+      particleFlowTmpPtrs, particleFlow, particleFlowTmp, particleBasedIsolation,
+      particleFlowClusterECAL, particleFlowClusterHCAL, particleFlowClusterHF, particleFlowClusterHO,
+      particleFlowClusterPS, particleFlowDisplacedVertex, pfChMet, pfMet, particleFlowRecHitECAL,
+      particleFlowRecHitHBHE, particleFlowRecHitHF, particleFlowRecHitHO, particleFlowRecHitPS,
+      hpsPFTauChargedIsoPtSum, hpsPFTauChargedIsoPtSumdR03, hpsPFTauDiscriminationByDeadECALElectronRejection,
+      hpsPFTauDiscriminationByDecayModeFinding, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauDiscriminationByDecayModeFindingOldDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw,
+      hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw,
+      hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw,
+      hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw, hpsPFTauDiscriminationByLooseChargedIsolation,
+      hpsPFTauDiscriminationByLooseCombinedIsolationDBSumPtCorr3Hits, hpsPFTauDiscriminationByLooseCombinedIsolationDBSumPtCorr3HitsdR03,
+      hpsPFTauDiscriminationByLooseElectronRejection, hpsPFTauDiscriminationByLooseIsolation,
+      hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBdR03oldDMwLT, hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBnewDMwLT,
+      hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWdR03oldDMwLT,
+      hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWnewDMwLT, hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWoldDMwLT,
+      hpsPFTauDiscriminationByLooseMuonRejection3, hpsPFTauDiscriminationByMVA6LooseElectronRejection,
+      hpsPFTauDiscriminationByMVA6MediumElectronRejection, hpsPFTauDiscriminationByMVA6TightElectronRejection,
+      hpsPFTauDiscriminationByMVA6VLooseElectronRejection, hpsPFTauDiscriminationByMVA6VTightElectronRejection,
+      hpsPFTauDiscriminationByMVA6rawElectronRejection, hpsPFTauDiscriminationByMediumCombinedIsolationDBSumPtCorr3Hits,
+      hpsPFTauDiscriminationByMediumCombinedIsolationDBSumPtCorr3HitsdR03, hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBdR03oldDMwLT,
+      hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBnewDMwLT, hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBoldDMwLT,
+      hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWdR03oldDMwLT, hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWnewDMwLT,
+      hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWoldDMwLT, hpsPFTauDiscriminationByPhotonPtSumOutsideSignalCone,
+      hpsPFTauDiscriminationByRawCombinedIsolationDBSumPtCorr3Hits, hpsPFTauDiscriminationByTightCombinedIsolationDBSumPtCorr3Hits,
+      hpsPFTauDiscriminationByTightCombinedIsolationDBSumPtCorr3HitsdR03, hpsPFTauDiscriminationByTightIsolationMVArun2v1DBdR03oldDMwLT,
+      hpsPFTauDiscriminationByTightIsolationMVArun2v1DBnewDMwLT, hpsPFTauDiscriminationByTightIsolationMVArun2v1DBoldDMwLT,
+      hpsPFTauDiscriminationByTightIsolationMVArun2v1PWdR03oldDMwLT, hpsPFTauDiscriminationByTightIsolationMVArun2v1PWnewDMwLT,
+      hpsPFTauDiscriminationByTightIsolationMVArun2v1PWoldDMwLT, hpsPFTauDiscriminationByTightMuonRejection3,
+      hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBdR03oldDMwLT, hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBnewDMwLT,
+      hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWdR03oldDMwLT,
+      hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWnewDMwLT, hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWoldDMwLT,
+      hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBdR03oldDMwLT, hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBnewDMwLT,
+      hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWdR03oldDMwLT,
+      hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWnewDMwLT, hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWoldDMwLT,
+      hpsPFTauDiscriminationByVVLooseIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBdR03oldDMwLT,
+      hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBnewDMwLT, hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBoldDMwLT,
+      hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWdR03oldDMwLT, hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWnewDMwLT,
+      hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWoldDMwLT, hpsPFTauFootprintCorrection,
+      hpsPFTauFootprintCorrectiondR03, hpsPFTauNeutralIsoPtSum, hpsPFTauNeutralIsoPtSumWeight,
+      hpsPFTauNeutralIsoPtSumWeightdR03, hpsPFTauNeutralIsoPtSumdR03, hpsPFTauPUcorrPtSum,
+      hpsPFTauPhotonPtSumOutsideSignalCone, hpsPFTauPhotonPtSumOutsideSignalConedR03,
+      hpsPFTauTransverseImpactParameters, hpsPFTauProducer, gedPhotonCore, ootPhotonCore,
+      photonCore, gedPhotons, ootPhotons, photons, trackerDrivenElectronSeeds, multi5x5PreshowerClusterShape,
+      multi5x5SuperClustersWithPreshower, trackRefsForJets, hfRecoEcalCandidate, correctedHybridSuperClusters,
+      correctedMulti5x5SuperClustersWithPreshower, trackExtrapolator, cosmicsVetoTracks,
+      displacedTracks, generalV0Candidates, inclusiveCandidateSecondaryVertices, inclusiveCandidateSecondaryVerticesCvsL,
+      inclusiveSecondaryVertices], ak4CaloJets: [offlinePrimaryVertices, towerMaker],
+    ak4CaloJetsForTrk: [firstStepPrimaryVerticesUnsorted, caloTowerForTrk], ak4CaloJetsForTrkPreSplitting: [
+      firstStepPrimaryVerticesPreSplitting, caloTowerForTrkPreSplitting], ak4JetExtender: [
+      ak4CaloJets, ak4JetTracksAssociatorAtVertex, ak4JetTracksAssociatorAtCaloFace],
+    ak4JetID: [hbhereco, horeco, hfreco, ecalRecHit, rpcRecHits, ak4CaloJets], ak4JetTracksAssociatorAtCaloFace: [
+      ak4CaloJets, trackExtrapolator], ak4JetTracksAssociatorAtVertex: [ak4CaloJets,
+      generalTracks, offlinePrimaryVertices], ak4JetTracksAssociatorAtVertexJPT: [
+      ak4CaloJets, generalTracks, offlinePrimaryVertices], ak4JetTracksAssociatorAtVertexPF: [
+      ak4PFJetsCHS, generalTracks, offlinePrimaryVertices], ak4JetTracksAssociatorExplicit: [
+      ak4PFJetsCHS, generalTracks], ak4PFCHSL1FastL2L3ResidualCorrector: [ak4PFCHSL1FastjetCorrector,
+      ak4PFCHSL2RelativeCorrector, ak4PFCHSL3AbsoluteCorrector, ak4PFCHSResidualCorrector],
+    ak4PFCHSL1FastjetCorrector: [fixedGridRhoFastjetAll], ak4PFJetTracksAssociatorAtVertex: [
+      ak4PFJets, generalTracks, offlinePrimaryVertices], ak4PFJets: [particleFlow],
+    ak4PFJetsCHS: [pfNoPileUpJME], ak4PFJetsLegacyHPSPiZeros: [ak4PFJets, offlinePrimaryVertices],
+    ak4PFJetsRecoTauChargedHadrons: [ak4PFJets, offlinePrimaryVertices, generalTracks],
+    ak4PFL1FastL2L3Corrector: [ak4PFL1FastjetCorrector, ak4PFL2RelativeCorrector,
+      ak4PFL3AbsoluteCorrector], ak4PFL1FastjetCorrector: [fixedGridRhoFastjetAll],
+    ak4TrackJets: [offlinePrimaryVertices, trackRefsForJets], ak5CastorJetID: [ak5CastorJets],
+    ak5CastorJets: [offlinePrimaryVertices, CastorTowerReco], ak7CastorJetID: [ak7CastorJets],
+    ak7CastorJets: [offlinePrimaryVertices, CastorTowerReco], ak8PFJetsCHS: [pfNoPileUpJME],
+    ak8PFJetsCHSConstituents: [ak8PFJetsCHS], ak8PFJetsCHSSoftDrop: [ak8PFJetsCHSConstituents],
+    ak8PFJetsCHSSoftDropMass: [ak8PFJetsCHS, ak8PFJetsCHSSoftDrop], allConversions: [
+      gsfGeneralInOutOutInConversionTrackMerger, offlinePrimaryVerticesWithBS, particleFlowSuperClusterECAL],
+    ancientMuonSeed: [dt4DSegments, cscSegments, offlineBeamSpot], caloMet: [towerMaker],
+    caloMetBE: [towerMaker], caloMetBEFO: [towerMakerWithHO], caloMetM: [muons, muonMETValueMapProducer,
+      caloMet], caloStage1FinalDigis: [caloStage1Digis], caloStage1LegacyFormatDigis: [
+      caloStage1Digis], caloTowerForTrk: [hbheprereco, horeco, hfreco, ecalRecHit],
+    caloTowerForTrkPreSplitting: [hbheprereco, horeco, hfreco, ecalRecHit], candidateVertexArbitrator: [
+      offlinePrimaryVertices, candidateVertexMerger, offlineBeamSpot, particleFlow],
+    candidateVertexArbitratorCvsL: [offlinePrimaryVertices, candidateVertexMergerCvsL,
+      offlineBeamSpot, particleFlow], candidateVertexMerger: [inclusiveCandidateVertexFinder],
+    candidateVertexMergerCvsL: [inclusiveCandidateVertexFinderCvsL], castorreco: [
+      castorDigis], chargeCut2069Clusters: [siPixelClusters, siStripClusters, pixelPairStepClusters],
+    chargedHadronPFTrackIsolation: [particleFlow], ckfInOutTracksFromConversions: [
+      MeasurementTrackerEvent, offlineBeamSpot, conversionTrackCandidates], ckfOutInTracksFromConversions: [
+      MeasurementTrackerEvent, offlineBeamSpot, conversionTrackCandidates], cleanedHybridSuperClusters: [
+      ecalRecHit], clusterSummaryProducer: [siPixelClustersPreSplitting, siStripClusters],
+    cmsTopTagPFJetsCHS: [ak8PFJetsCHSConstituents], combinatoricRecoTaus: [ak4PFJets,
+      recoTauAK4PFJets08Region, ak4PFJetsRecoTauChargedHadrons, ak4PFJetsLegacyHPSPiZeros,
+      offlinePrimaryVertices, particleFlow, pfRecoTauTagInfoProducer], convClusters: [
+      tobTecStepTracks, siPixelClusters, siStripClusters, tobTecStep, tobTecStepClusters],
+    convLayerPairs: [siPixelRecHits, convClusters, siStripMatchedRecHits], convStepSelector: [
+      convStepTracks, offlineBeamSpot, firstStepPrimaryVertices], convStepTracks: [
+      MeasurementTrackerEvent, offlineBeamSpot, convTrackCandidates], convTrackCandidates: [
+      MeasurementTrackerEvent, photonConvTrajSeedFromSingleLeg, convClusters], conversionStepConversionTrackProducer: [
+      offlineBeamSpot, conversionStepTracks], conversionStepTracks: [convStepSelector,
+      convStepTracks], conversionTrackCandidates: [MeasurementTrackerEvent, offlineBeamSpot,
+      particleFlowSuperClusterECAL, ecalRecHit, towerMaker], conversions: [particleFlowSuperClusterECAL,
+      ckfOutInTracksFromConversions, ckfInOutTracksFromConversions, generalTracks,
+      towerMaker], correctedHybridSuperClusters: [ecalRecHit, hybridSuperClusters],
+    correctedMulti5x5SuperClustersWithPreshower: [ecalRecHit, multi5x5SuperClustersWithPreshower],
+    cosmicDCCkfTrackCandidates: [MeasurementTrackerEvent, cosmicDCSeeds], cosmicDCSeeds: [
+      muonsFromCosmics, MeasurementTrackerEvent], cosmicDCTracks: [MeasurementTrackerEvent,
+      offlineBeamSpot, cosmicDCCkfTrackCandidates], cosmicMuons: [CosmicMuonSeed,
+      dt4DCosmicSegments, cscSegments, rpcRecHits, offlineBeamSpot], cosmicMuons1Leg: [
+      CosmicMuonSeed, dt4DCosmicSegments, cscSegments, rpcRecHits, offlineBeamSpot],
+    cosmicsVeto: [muons1stStep, generalTracks, cosmicsVetoTracks, muonsFromCosmics1Leg,
+      offlinePrimaryVertices], cosmicsVetoSeeds: [muons1stStep, generalTracks], cosmicsVetoTrackCandidates: [
+      MeasurementTrackerEvent, cosmicsVetoSeeds], cosmicsVetoTracks: [cosmicsVetoTracksRaw,
+      offlineBeamSpot], cosmicsVetoTracksRaw: [MeasurementTrackerEvent, offlineBeamSpot,
+      cosmicsVetoTrackCandidates], csc2DRecHits: [muonCSCDigis], cscSegments: [csc2DRecHits],
+    ctppsDiamondLocalTracks: [ctppsDiamondRecHits], ctppsDiamondRecHits: [ctppsDiamondRawToDigi],
+    ctppsLocalTrackLiteProducer: [totemRPLocalTrackFitter, ctppsDiamondLocalTracks,
+      ctppsPixelLocalTracks], ctppsPixelClusters: [ctppsPixelDigis], ctppsPixelLocalTracks: [
+      ctppsPixelRecHits], ctppsPixelRecHits: [ctppsPixelClusters], dedxHarmonic2: [
+      generalTracks], dedxHitInfo: [generalTracks], dedxPixelAndStripHarmonic2T085: [
+      generalTracks], dedxPixelHarmonic2: [generalTracks], dedxTruncated40: [generalTracks],
+    detachedQuadStep: [detachedQuadStepTracks, offlineBeamSpot, firstStepPrimaryVertices],
+    detachedQuadStepClusters: [lowPtTripletStepTracks, siPixelClusters, siStripClusters,
+      lowPtTripletStep, lowPtTripletStepClusters], detachedQuadStepHitDoublets: [
+      detachedQuadStepSeedLayers, detachedQuadStepTrackingRegions, trackerClusterCheck],
+    detachedQuadStepHitQuadruplets: [detachedQuadStepHitDoublets], detachedQuadStepSeedLayers: [
+      siPixelRecHits, detachedQuadStepClusters], detachedQuadStepSeeds: [detachedQuadStepHitQuadruplets,
+      siPixelClusterShapeCache], detachedQuadStepTrackCandidates: [MeasurementTrackerEvent,
+      detachedQuadStepSeeds, detachedQuadStepClusters], detachedQuadStepTrackingRegions: [
+      offlineBeamSpot], detachedQuadStepTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      detachedQuadStepTrackCandidates], detachedTripletStep: [detachedTripletStepTracks,
+      offlineBeamSpot, firstStepPrimaryVertices], detachedTripletStepClassifier1: [
+      detachedTripletStepTracks, offlineBeamSpot, firstStepPrimaryVertices], detachedTripletStepClassifier2: [
+      detachedTripletStepTracks, offlineBeamSpot, firstStepPrimaryVertices], detachedTripletStepClusters: [
+      detachedQuadStepTracks, siPixelClusters, siStripClusters, detachedQuadStep,
+      detachedQuadStepClusters], detachedTripletStepHitDoublets: [detachedTripletStepSeedLayers,
+      detachedTripletStepTrackingRegions, trackerClusterCheck], detachedTripletStepHitTriplets: [
+      detachedTripletStepHitDoublets], detachedTripletStepSeedClusterMask: [lowPtTripletStepSeeds,
+      siPixelClusters, siStripClusters, initialStepSeedClusterMask], detachedTripletStepSeedLayers: [
+      siPixelRecHits, detachedTripletStepClusters], detachedTripletStepSeeds: [detachedTripletStepHitTriplets,
+      siPixelClusterShapeCache], detachedTripletStepTrackCandidates: [MeasurementTrackerEvent,
+      detachedTripletStepSeeds, detachedTripletStepClusters], detachedTripletStepTrackingRegions: [
+      offlineBeamSpot], detachedTripletStepTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      detachedTripletStepTrackCandidates], displacedGlobalMuons: [displacedStandAloneMuons,
+      offlineBeamSpot, gemRecHits, cscSegments, dt4DSegments, displacedTracks], displacedMuonSeeds: [
+      dt4DSegments, cscSegments], displacedStandAloneMuons: [offlineBeamSpot, dt4DSegments,
+      cscSegments, rpcRecHits, gemRecHits, displacedMuonSeeds], displacedTracks: [
+      mergedDuplicateDisplacedTracks, preDuplicateMergingDisplacedTracks, duplicateDisplacedTrackCandidates,
+      duplicateDisplacedTrackClassifier], dt1DCosmicRecHits: [muonDTDigis], dt1DRecHits: [
+      muonDTDigis], dt4DCosmicSegments: [dt1DCosmicRecHits], dt4DSegments: [dt1DRecHits],
+    duplicateDisplacedTrackCandidates: [preDuplicateMergingDisplacedTracks], duplicateDisplacedTrackClassifier: [
+      mergedDuplicateDisplacedTracks, offlineBeamSpot, firstStepPrimaryVertices],
+    duplicateTrackCandidates: [preDuplicateMergingGeneralTracks], duplicateTrackClassifier: [
+      mergedDuplicateTracks, offlineBeamSpot, firstStepPrimaryVertices], earlyDisplacedMuons: [
+      dt4DSegments, cscSegments, rpcRecHits, earlyGeneralTracks, displacedStandAloneMuons],
+    earlyGeneralTracks: [initialStepTracks, highPtTripletStepTracks, jetCoreRegionalStepTracks,
+      lowPtQuadStepTracks, lowPtTripletStepTracks, detachedQuadStepTracks, detachedTripletStepTracks,
+      pixelPairStepTracks, mixedTripletStepTracks, pixelLessStepTracks, tobTecStepTracks,
+      initialStep, highPtTripletStep, jetCoreRegionalStep, lowPtQuadStep, lowPtTripletStep,
+      detachedQuadStep, detachedTripletStep, pixelPairStep, mixedTripletStep, pixelLessStep,
+      tobTecStep], earlyMuons: [dt4DSegments, cscSegments, rpcRecHits, earlyGeneralTracks,
+      standAloneMuons], ecalCompactTrigPrim: [ecalDigis], ecalDetIdToBeRecovered: [
+      ecalDigis], ecalDrivenElectronSeeds: [newCombinedSeeds, offlineBeamSpot, towerMaker,
+      offlinePrimaryVerticesWithBS, MeasurementTrackerEvent, particleFlowSuperClusterECAL],
+    ecalDrivenGsfElectronCores: [pfTrackElec, electronGsfTracks, generalTracks], ecalDrivenGsfElectrons: [
+      ecalDrivenGsfElectronCores, towerMaker, ecalRecHit, generalTracks, ecalDrivenElectronSeeds,
+      offlineBeamSpot, pfTrackElec, offlinePrimaryVertices], ecalMultiFitUncalibRecHit: [
+      ecalDigis, bunchSpacingProducer], ecalPreshowerRecHit: [ecalPreshowerDigis],
+    ecalRecHit: [ecalMultiFitUncalibRecHit, ecalDetIdToBeRecovered, ecalDigis], ecalTPSkim: [
+      ecalDigis], egmElectronIsolationCITK: [gedGsfElectronsTmp, pfNoPileUpCandidates,
+      particleBasedIsolationTmp], egmElectronIsolationPileUpCITK: [gedGsfElectronsTmp,
+      pfPileUpAllChargedParticles, particleBasedIsolationTmp], egmGedGsfElectronPFNoPileUpIsolation: [
+      gedGsfElectrons, pfNoPileUpCandidates], egmGedGsfElectronPFPileUpIsolation: [
+      gedGsfElectrons, pfPileUpAllChargedParticles], egmPhotonIsolationCITK: [gedPhotonsTmp,
+      pfNoPileUpCandidates, particleBasedIsolationTmp], eidLoose: [gedGsfElectrons,
+      offlinePrimaryVerticesWithBS], eidRobustHighEnergy: [gedGsfElectrons, offlinePrimaryVerticesWithBS],
+    eidRobustLoose: [gedGsfElectrons, offlinePrimaryVerticesWithBS], eidRobustTight: [
+      gedGsfElectrons, offlinePrimaryVerticesWithBS], eidTight: [gedGsfElectrons,
+      offlinePrimaryVerticesWithBS], electronCkfTrackCandidates: [MeasurementTrackerEvent,
+      electronMergedSeeds], electronEcalPFClusterIsolationProducer: [gedGsfElectronsTmp,
+      particleFlowClusterECAL], electronGsfTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      electronCkfTrackCandidates], electronHcalPFClusterIsolationProducer: [gedGsfElectronsTmp,
+      particleFlowClusterHCAL], electronMergedSeeds: [ecalDrivenElectronSeeds, trackerDrivenElectronSeeds],
+    electronsWithPresel: [ecalDrivenGsfElectrons], firstStepGoodPrimaryVertices: [
+      firstStepPrimaryVertices], firstStepPrimaryVertices: [initialStepTrackRefsForJets,
+      firstStepPrimaryVerticesUnsorted, ak4CaloJetsForTrk], firstStepPrimaryVerticesPreSplitting: [
+      initialStepTracksPreSplitting, offlineBeamSpot], firstStepPrimaryVerticesUnsorted: [
+      initialStepTracks, offlineBeamSpot], fixedGridRhoAll: [particleFlow], fixedGridRhoFastjetAll: [
+      particleFlow], fixedGridRhoFastjetAllCalo: [towerMaker], fixedGridRhoFastjetAllTmp: [
+      particleFlowTmp], fixedGridRhoFastjetCentral: [particleFlow], fixedGridRhoFastjetCentralCalo: [
+      towerMaker], fixedGridRhoFastjetCentralChargedPileUp: [pfPileUpAllChargedParticles],
+    fixedGridRhoFastjetCentralNeutral: [pfAllNeutralHadronsAndPhotons], gedElPFIsoDepositCharged: [
+      gedGsfElectronsTmp, pfAllChargedHadrons], gedElPFIsoDepositChargedAll: [gedGsfElectronsTmp,
+      pfAllChargedParticles], gedElPFIsoDepositGamma: [gedGsfElectronsTmp, pfAllPhotons],
+    gedElPFIsoDepositNeutral: [gedGsfElectronsTmp, pfAllNeutralHadrons], gedElPFIsoDepositPU: [
+      gedGsfElectronsTmp, pfPileUpAllChargedParticles], gedElPFIsoValueCharged03: [
+      gedElPFIsoDepositCharged], gedElPFIsoValueChargedAll03: [gedElPFIsoDepositChargedAll],
+    gedElPFIsoValueGamma03: [gedElPFIsoDepositGamma], gedElPFIsoValueNeutral03: [
+      gedElPFIsoDepositNeutral], gedElPFIsoValuePU03: [gedElPFIsoDepositPU], gedGsfElectronCores: [
+      pfTrackElec, electronGsfTracks, generalTracks, particleFlowEGamma], gedGsfElectrons: [
+      gedGsfElectronsTmp, particleFlowTmp, egmElectronIsolationCITK, egmElectronIsolationPileUpCITK,
+      electronEcalPFClusterIsolationProducer, electronHcalPFClusterIsolationProducer,
+      fixedGridRhoFastjetAllTmp], gedGsfElectronsTmp: [gedGsfElectronCores, towerMaker,
+      ecalRecHit, generalTracks, ecalDrivenElectronSeeds, offlineBeamSpot, pfTrackElec,
+      offlinePrimaryVertices, particleFlowEGamma], gedPhotonCore: [particleFlowEGamma,
+      electronMergedSeeds], gedPhotons: [gedPhotonsTmp, particleFlowTmp, egmPhotonIsolationCITK,
+      photonEcalPFClusterIsolationProducer, photonHcalPFClusterIsolationProducer,
+      particleFlowEGamma, ecalRecHit, ecalPreshowerRecHit, offlinePrimaryVerticesWithBS,
+      towerMaker, fixedGridRhoFastjetAllTmp], gedPhotonsTmp: [gedPhotonCore, particleFlowEGamma,
+      ecalRecHit, ecalPreshowerRecHit, offlinePrimaryVerticesWithBS, towerMaker, generalTracks,
+      offlineBeamSpot], gemRecHits: [muonGEMDigis], gemSegments: [gemRecHits], generalConversionStepConversionTrackMerger: [
+      generalConversionTrackProducer, conversionStepConversionTrackProducer], generalConversionTrackProducer: [
+      offlineBeamSpot, generalTracks], generalInOutOutInConversionTrackMerger: [inOutOutInConversionTrackMerger,
+      generalConversionStepConversionTrackMerger], generalTracks: [mergedDuplicateTracks,
+      preDuplicateMergingGeneralTracks, duplicateTrackCandidates, duplicateTrackClassifier],
+    generalV0Candidates: [offlineBeamSpot, offlinePrimaryVertices, generalTracks],
+    glbTrackQual: [dt1DRecHits, csc2DRecHits, gemRecHits, cscSegments, dt4DSegments,
+      globalMuons], globalMuons: [standAloneMuons, offlineBeamSpot, gemRecHits, cscSegments,
+      dt4DSegments, generalTracks], goodOfflinePrimaryVertices: [offlinePrimaryVertices],
+    gsfConversionTrackProducer: [offlineBeamSpot, electronGsfTracks], gsfGeneralInOutOutInConversionTrackMerger: [
+      generalInOutOutInConversionTrackMerger, gsfConversionTrackProducer], hbheprereco: [
+      hcalDigis], hbhereco: [hbheprereco, ecalRecHit, trackExtrapolator], hcalnoise: [
+      ak4PFJets, hcalDigis, hbhereco, towerMaker, generalTracks], hfEMClusters: [
+      hfreco], hfRecoEcalCandidate: [hfEMClusters, offlinePrimaryVertices], hfprereco: [
+      hcalDigis], hfreco: [hfprereco], highPtTripletStep: [highPtTripletStepTracks,
+      offlineBeamSpot, firstStepPrimaryVertices], highPtTripletStepClusters: [lowPtQuadStepTracks,
+      siPixelClusters, siStripClusters, lowPtQuadStep, lowPtQuadStepClusters], highPtTripletStepHitDoublets: [
+      highPtTripletStepSeedLayers, highPtTripletStepTrackingRegions, trackerClusterCheck],
+    highPtTripletStepHitTriplets: [highPtTripletStepHitDoublets, siPixelClusterShapeCache],
+    highPtTripletStepSeedLayers: [siPixelRecHits, highPtTripletStepClusters], highPtTripletStepSeeds: [
+      highPtTripletStepHitTriplets], highPtTripletStepTrackCandidates: [MeasurementTrackerEvent,
+      highPtTripletStepSeeds, highPtTripletStepClusters], highPtTripletStepTrackingRegions: [
+      offlineBeamSpot], highPtTripletStepTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      highPtTripletStepTrackCandidates], horeco: [hcalDigis], hpsPFTauChargedIsoPtSum: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices],
+    hpsPFTauChargedIsoPtSumdR03: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices], hpsPFTauDiscriminationByDeadECALElectronRejection: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs], hpsPFTauDiscriminationByDecayModeFinding: [
+      hpsPFTauProducer], hpsPFTauDiscriminationByDecayModeFindingNewDMs: [hpsPFTauProducer],
+    hpsPFTauDiscriminationByDecayModeFindingOldDMs: [hpsPFTauProducer], hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauTransverseImpactParameters,
+      hpsPFTauChargedIsoPtSumdR03, hpsPFTauNeutralIsoPtSumdR03, hpsPFTauPUcorrPtSumdR03,
+      hpsPFTauPhotonPtSumOutsideSignalConedR03, hpsPFTauFootprintCorrectiondR03],
+    hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauTransverseImpactParameters, hpsPFTauChargedIsoPtSum, hpsPFTauNeutralIsoPtSum,
+      hpsPFTauPUcorrPtSum, hpsPFTauPhotonPtSumOutsideSignalCone, hpsPFTauFootprintCorrection],
+    hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauTransverseImpactParameters, hpsPFTauChargedIsoPtSum, hpsPFTauNeutralIsoPtSum,
+      hpsPFTauPUcorrPtSum, hpsPFTauPhotonPtSumOutsideSignalCone, hpsPFTauFootprintCorrection],
+    hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauTransverseImpactParameters,
+      hpsPFTauChargedIsoPtSumdR03, hpsPFTauNeutralIsoPtSumWeightdR03, hpsPFTauPUcorrPtSumdR03,
+      hpsPFTauPhotonPtSumOutsideSignalConedR03, hpsPFTauFootprintCorrectiondR03],
+    hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauTransverseImpactParameters, hpsPFTauChargedIsoPtSum, hpsPFTauNeutralIsoPtSumWeight,
+      hpsPFTauPUcorrPtSum, hpsPFTauPhotonPtSumOutsideSignalCone, hpsPFTauFootprintCorrection],
+    hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauTransverseImpactParameters, hpsPFTauChargedIsoPtSum, hpsPFTauNeutralIsoPtSumWeight,
+      hpsPFTauPUcorrPtSum, hpsPFTauPhotonPtSumOutsideSignalCone, hpsPFTauFootprintCorrection],
+    hpsPFTauDiscriminationByLooseChargedIsolation: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices, particleFlow], hpsPFTauDiscriminationByLooseCombinedIsolationDBSumPtCorr3Hits: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByLooseCombinedIsolationDBSumPtCorr3HitsdR03: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByLooseElectronRejection: [hpsPFTauProducer],
+    hpsPFTauDiscriminationByLooseIsolation: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauDiscriminationByLooseChargedIsolation, offlinePrimaryVertices], hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBdR03oldDMwLT: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw],
+    hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw],
+    hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw],
+    hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw],
+    hpsPFTauDiscriminationByLooseMuonRejection3: [hpsPFTauProducer, muons], hpsPFTauDiscriminationByLoosePileupWeightedIsolation3Hits: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByMVA6LooseElectronRejection: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByMVA6rawElectronRejection],
+    hpsPFTauDiscriminationByMVA6MediumElectronRejection: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauDiscriminationByMVA6rawElectronRejection], hpsPFTauDiscriminationByMVA6TightElectronRejection: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByMVA6rawElectronRejection],
+    hpsPFTauDiscriminationByMVA6VLooseElectronRejection: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauDiscriminationByMVA6rawElectronRejection], hpsPFTauDiscriminationByMVA6VTightElectronRejection: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByMVA6rawElectronRejection],
+    hpsPFTauDiscriminationByMVA6rawElectronRejection: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      gedGsfElectrons], hpsPFTauDiscriminationByMediumCombinedIsolationDBSumPtCorr3Hits: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByMediumCombinedIsolationDBSumPtCorr3HitsdR03: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByMediumElectronRejection: [hpsPFTauProducer],
+    hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw],
+    hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw],
+    hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw],
+    hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw],
+    hpsPFTauDiscriminationByMediumPileupWeightedIsolation3Hits: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices, particleFlow],
+    hpsPFTauDiscriminationByPhotonPtSumOutsideSignalCone: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices, particleFlow], hpsPFTauDiscriminationByRawCombinedIsolationDBSumPtCorr3Hits: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByRawPileupWeightedIsolation3Hits: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByPhotonPtSumOutsideSignalCone, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByTightCombinedIsolationDBSumPtCorr3Hits: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByTightCombinedIsolationDBSumPtCorr3HitsdR03: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByTightElectronRejection: [hpsPFTauProducer],
+    hpsPFTauDiscriminationByTightIsolationMVArun2v1DBdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByTightIsolationMVArun2v1DBnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw],
+    hpsPFTauDiscriminationByTightIsolationMVArun2v1DBoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw],
+    hpsPFTauDiscriminationByTightIsolationMVArun2v1PWdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByTightIsolationMVArun2v1PWnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw],
+    hpsPFTauDiscriminationByTightIsolationMVArun2v1PWoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw],
+    hpsPFTauDiscriminationByTightMuonRejection3: [hpsPFTauProducer, muons], hpsPFTauDiscriminationByTightPileupWeightedIsolation3Hits: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBdR03oldDMwLT: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw],
+    hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw],
+    hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw],
+    hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw],
+    hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw],
+    hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw],
+    hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw],
+    hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw],
+    hpsPFTauDiscriminationByVVLooseIsolationMVArun2v1DBoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw],
+    hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw],
+    hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw],
+    hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWdR03oldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw],
+    hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWnewDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw],
+    hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWoldDMwLT: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw],
+    hpsPFTauFootprintCorrection: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices], hpsPFTauFootprintCorrectiondR03: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices], hpsPFTauNeutralIsoPtSum: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices],
+    hpsPFTauNeutralIsoPtSumWeight: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices, particleFlow], hpsPFTauNeutralIsoPtSumWeightdR03: [
+      hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices,
+      particleFlow], hpsPFTauNeutralIsoPtSumdR03: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices], hpsPFTauPUcorrPtSum: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices, particleFlow], hpsPFTauPUcorrPtSumdR03: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices, particleFlow],
+    hpsPFTauPhotonPtSumOutsideSignalCone: [hpsPFTauProducer, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      offlinePrimaryVertices], hpsPFTauPhotonPtSumOutsideSignalConedR03: [hpsPFTauProducer,
+      hpsPFTauDiscriminationByDecayModeFindingNewDMs, offlinePrimaryVertices], hpsPFTauPrimaryVertexProducer: [
+      hpsPFTauProducer, offlinePrimaryVertices, offlineBeamSpot, hpsPFTauDiscriminationByDecayModeFindingNewDMs],
+    hpsPFTauProducer: [hpsPFTauProducerSansRefs], hpsPFTauProducerSansRefs: [combinatoricRecoTaus,
+      hpsSelectionDiscriminator], hpsPFTauSecondaryVertexProducer: [hpsPFTauProducer],
+    hpsPFTauTransverseImpactParameters: [hpsPFTauProducer, hpsPFTauPrimaryVertexProducer,
+      hpsPFTauSecondaryVertexProducer], hpsSelectionDiscriminator: [combinatoricRecoTaus],
+    hybridSuperClusters: [cleanedHybridSuperClusters, uncleanedHybridSuperClusters],
+    inOutConversionTrackProducer: [offlineBeamSpot, ckfInOutTracksFromConversions],
+    inOutOutInConversionTrackMerger: [inOutConversionTrackProducer, outInConversionTrackProducer],
+    inclusiveCandidateSecondaryVertices: [candidateVertexArbitrator], inclusiveCandidateSecondaryVerticesCvsL: [
+      candidateVertexArbitratorCvsL], inclusiveCandidateVertexFinder: [offlineBeamSpot,
+      offlinePrimaryVertices, particleFlow], inclusiveCandidateVertexFinderCvsL: [
+      offlineBeamSpot, offlinePrimaryVertices, particleFlow], inclusiveSecondaryVertices: [
+      trackVertexArbitrator], inclusiveVertexFinder: [offlineBeamSpot, offlinePrimaryVertices,
+      generalTracks], initialStep: [initialStepTracks, offlineBeamSpot, firstStepPrimaryVertices],
+    initialStepClassifier1: [initialStepTracks, offlineBeamSpot, firstStepPrimaryVertices],
+    initialStepHitDoublets: [initialStepSeedLayers, initialStepTrackingRegions, trackerClusterCheck],
+    initialStepHitDoubletsPreSplitting: [initialStepSeedLayersPreSplitting, initialStepTrackingRegionsPreSplitting,
+      trackerClusterCheckPreSplitting], initialStepHitQuadruplets: [initialStepHitDoublets,
+      siPixelClusterShapeCache], initialStepHitQuadrupletsPreSplitting: [initialStepHitDoubletsPreSplitting,
+      siPixelClusterShapeCachePreSplitting], initialStepSeedClusterMask: [initialStepSeeds,
+      siPixelClusters, siStripClusters, pixelLessStepClusters], initialStepSeedLayers: [
+      siPixelRecHits], initialStepSeedLayersPreSplitting: [siPixelRecHitsPreSplitting],
+    initialStepSeeds: [initialStepHitQuadruplets, siPixelClusterShapeCache], initialStepSeedsPreSplitting: [
+      initialStepHitQuadrupletsPreSplitting], initialStepTrackCandidates: [MeasurementTrackerEvent,
+      initialStepSeeds], initialStepTrackCandidatesPreSplitting: [MeasurementTrackerEventPreSplitting,
+      initialStepSeedsPreSplitting], initialStepTrackRefsForJets: [initialStepTracks],
+    initialStepTrackRefsForJetsPreSplitting: [initialStepTracksPreSplitting], initialStepTrackingRegions: [
+      offlineBeamSpot], initialStepTrackingRegionsPreSplitting: [offlineBeamSpot],
+    initialStepTracks: [MeasurementTrackerEvent, offlineBeamSpot, initialStepTrackCandidates],
+    initialStepTracksPreSplitting: [MeasurementTrackerEventPreSplitting, offlineBeamSpot,
+      initialStepTrackCandidatesPreSplitting], interestingEcalDetIdEB: [ecalRecHit,
+      hybridSuperClusters], interestingEcalDetIdEBU: [ecalRecHit, hybridSuperClusters],
+    interestingEcalDetIdEE: [ecalRecHit, multi5x5SuperClusters], interestingEcalDetIdOOTPFEB: [
+      ecalRecHit, particleFlowSuperClusterOOTECAL], interestingEcalDetIdOOTPFEE: [
+      ecalRecHit, particleFlowSuperClusterOOTECAL], interestingEcalDetIdOOTPFES: [
+      ecalPreshowerRecHit, particleFlowSuperClusterOOTECAL], interestingEcalDetIdPFEB: [
+      ecalRecHit, particleFlowSuperClusterECAL], interestingEcalDetIdPFEE: [ecalRecHit,
+      particleFlowSuperClusterECAL], interestingEcalDetIdPFES: [ecalPreshowerRecHit,
+      particleFlowSuperClusterECAL], interestingEcalDetIdRefinedEB: [ecalRecHit, particleFlowEGamma],
+    interestingEcalDetIdRefinedEE: [ecalRecHit, particleFlowEGamma], interestingEcalDetIdRefinedES: [
+      ecalPreshowerRecHit, particleFlowEGamma], interestingGamIsoDetIdEB: [ecalRecHit,
+      photons], interestingGamIsoDetIdEE: [ecalRecHit, photons], interestingGedEgammaIsoESDetId: [
+      gedGsfElectrons, gedPhotons, particleFlowEGamma], interestingGedEgammaIsoHCALDetId: [
+      hbhereco, gedGsfElectrons, gedPhotons, particleFlowEGamma], interestingGedEleIsoDetIdEB: [
+      ecalRecHit, gedGsfElectrons], interestingGedEleIsoDetIdEE: [ecalRecHit, gedGsfElectrons],
+    interestingGedGamIsoDetIdEB: [ecalRecHit, gedPhotons], interestingGedGamIsoDetIdEE: [
+      ecalRecHit, gedPhotons], interestingOotEgammaIsoESDetId: [particleFlowClusterOOTECAL,
+      ootPhotons], interestingOotEgammaIsoHCALDetId: [hbhereco, ootPhotons], interestingOotGamIsoDetIdEB: [
+      ecalRecHit, ootPhotons], interestingOotGamIsoDetIdEE: [ecalRecHit, ootPhotons],
+    interestingTrackEcalDetIds: [generalTracks, ecalRecHit, hbhereco, horeco, dt4DSegments,
+      cscSegments], jetCoreRegionalStep: [jetCoreRegionalStepTracks, offlineBeamSpot,
+      firstStepPrimaryVertices], jetCoreRegionalStepHitDoublets: [jetCoreRegionalStepSeedLayers,
+      jetCoreRegionalStepTrackingRegions, trackerClusterCheck], jetCoreRegionalStepSeedLayers: [
+      siPixelRecHits, siStripMatchedRecHits], jetCoreRegionalStepSeeds: [jetCoreRegionalStepHitDoublets],
+    jetCoreRegionalStepTrackCandidates: [MeasurementTrackerEvent, jetCoreRegionalStepSeeds],
+    jetCoreRegionalStepTrackingRegions: [jetsForCoreTracking, firstStepGoodPrimaryVertices],
+    jetCoreRegionalStepTracks: [MeasurementTrackerEvent, offlineBeamSpot, jetCoreRegionalStepTrackCandidates],
+    jetsForCoreTracking: [ak4CaloJetsForTrk], jetsForCoreTrackingPreSplitting: [ak4CaloJetsForTrkPreSplitting],
+    l1extraParticles: [gtDigis, caloStage1LegacyFormatDigis], logErrorHarvester: [
+      csc2DRecHits, cscSegments, ctppsDiamondLocalTracks, ctppsDiamondRecHits, ctppsLocalTrackLiteProducer,
+      ctppsPixelClusters, ctppsPixelLocalTracks, ctppsPixelRecHits, castorreco, clusterSummaryProducer,
+      dt4DCosmicSegments, dt4DSegments, dt1DCosmicRecHits, dt1DRecHits, ecalPreshowerRecHit,
+      ecalRecHit, ecalCompactTrigPrim, ecalTPSkim, gemRecHits, gemSegments, hbheprereco,
+      hbhereco, hfprereco, hfreco, horeco, hcalnoise, ckfInOutTracksFromConversions,
+      ckfOutInTracksFromConversions, conversionStepTracks, cosmicDCTracks, cosmicMuons,
+      cosmicMuons1Leg, cosmicsVetoTracks, displacedGlobalMuons, displacedStandAloneMuons,
+      displacedTracks, electronGsfTracks, generalTracks, globalMuons, CosmicMuonSeed,
+      ancientMuonSeed, displacedMuonSeeds, PhotonIDProd, PhotonIDProdGED, chargedHadronPFTrackIsolation,
+      ak4CaloJets, ak4PFJets, ak4PFJetsCHS, ak4TrackJets, ak5CastorJets, ak7CastorJets,
+      ak8PFJetsCHS, ak8PFJetsCHSSoftDrop, cmsTopTagPFJetsCHS, fixedGridRhoAll, fixedGridRhoFastjetAll,
+      fixedGridRhoFastjetAllCalo, fixedGridRhoFastjetAllTmp, fixedGridRhoFastjetCentral,
+      fixedGridRhoFastjetCentralCalo, fixedGridRhoFastjetCentralChargedPileUp, fixedGridRhoFastjetCentralNeutral,
+      ak8PFJetsCHSSoftDropMass, eidLoose, eidRobustHighEnergy, eidRobustLoose, eidRobustTight,
+      eidTight, dedxHitInfo, BeamHaloSummary, CSCHaloData, hfEMClusters, hybridSuperClusters,
+      caloMet, caloMetBE, caloMetBEFO, caloMetM, ak5CastorJetID, ak7CastorJetID, CastorTowerReco,
+      allConversions, conversions, dedxHarmonic2, dedxPixelHarmonic2, dedxTruncated40,
+      EcalHaloData, electronMergedSeeds, GlobalHaloData, gedGsfElectronCores, gedGsfElectrons,
+      HcalHaloData, JetPlusTrackZSPCorJetAntiKt4, ak4JetID, ak4JetExtender, ak4JetTracksAssociatorAtCaloFace,
+      ak4JetTracksAssociatorAtVertex, ak4JetTracksAssociatorAtVertexPF, ak4JetTracksAssociatorExplicit,
+      hpsPFTauChargedIsoPtSum, hpsPFTauChargedIsoPtSumdR03, hpsPFTauDiscriminationByDeadECALElectronRejection,
+      hpsPFTauDiscriminationByDecayModeFinding, hpsPFTauDiscriminationByDecayModeFindingNewDMs,
+      hpsPFTauDiscriminationByDecayModeFindingOldDMs, hpsPFTauDiscriminationByIsolationMVArun2v1DBdR03oldDMwLTraw,
+      hpsPFTauDiscriminationByIsolationMVArun2v1DBnewDMwLTraw, hpsPFTauDiscriminationByIsolationMVArun2v1DBoldDMwLTraw,
+      hpsPFTauDiscriminationByIsolationMVArun2v1PWdR03oldDMwLTraw, hpsPFTauDiscriminationByIsolationMVArun2v1PWnewDMwLTraw,
+      hpsPFTauDiscriminationByIsolationMVArun2v1PWoldDMwLTraw, hpsPFTauDiscriminationByLooseChargedIsolation,
+      hpsPFTauDiscriminationByLooseCombinedIsolationDBSumPtCorr3Hits, hpsPFTauDiscriminationByLooseCombinedIsolationDBSumPtCorr3HitsdR03,
+      hpsPFTauDiscriminationByLooseElectronRejection, hpsPFTauDiscriminationByLooseIsolation,
+      hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBdR03oldDMwLT, hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBnewDMwLT,
+      hpsPFTauDiscriminationByLooseIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWdR03oldDMwLT,
+      hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWnewDMwLT, hpsPFTauDiscriminationByLooseIsolationMVArun2v1PWoldDMwLT,
+      hpsPFTauDiscriminationByLooseMuonRejection3, hpsPFTauDiscriminationByMVA6LooseElectronRejection,
+      hpsPFTauDiscriminationByMVA6MediumElectronRejection, hpsPFTauDiscriminationByMVA6TightElectronRejection,
+      hpsPFTauDiscriminationByMVA6VLooseElectronRejection, hpsPFTauDiscriminationByMVA6VTightElectronRejection,
+      hpsPFTauDiscriminationByMVA6rawElectronRejection, hpsPFTauDiscriminationByMediumCombinedIsolationDBSumPtCorr3Hits,
+      hpsPFTauDiscriminationByMediumCombinedIsolationDBSumPtCorr3HitsdR03, hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBdR03oldDMwLT,
+      hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBnewDMwLT, hpsPFTauDiscriminationByMediumIsolationMVArun2v1DBoldDMwLT,
+      hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWdR03oldDMwLT, hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWnewDMwLT,
+      hpsPFTauDiscriminationByMediumIsolationMVArun2v1PWoldDMwLT, hpsPFTauDiscriminationByPhotonPtSumOutsideSignalCone,
+      hpsPFTauDiscriminationByRawCombinedIsolationDBSumPtCorr3Hits, hpsPFTauDiscriminationByTightCombinedIsolationDBSumPtCorr3Hits,
+      hpsPFTauDiscriminationByTightCombinedIsolationDBSumPtCorr3HitsdR03, hpsPFTauDiscriminationByTightIsolationMVArun2v1DBdR03oldDMwLT,
+      hpsPFTauDiscriminationByTightIsolationMVArun2v1DBnewDMwLT, hpsPFTauDiscriminationByTightIsolationMVArun2v1DBoldDMwLT,
+      hpsPFTauDiscriminationByTightIsolationMVArun2v1PWdR03oldDMwLT, hpsPFTauDiscriminationByTightIsolationMVArun2v1PWnewDMwLT,
+      hpsPFTauDiscriminationByTightIsolationMVArun2v1PWoldDMwLT, hpsPFTauDiscriminationByTightMuonRejection3,
+      hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBdR03oldDMwLT, hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBnewDMwLT,
+      hpsPFTauDiscriminationByVLooseIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWdR03oldDMwLT,
+      hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWnewDMwLT, hpsPFTauDiscriminationByVLooseIsolationMVArun2v1PWoldDMwLT,
+      hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBdR03oldDMwLT, hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBnewDMwLT,
+      hpsPFTauDiscriminationByVTightIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWdR03oldDMwLT,
+      hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWnewDMwLT, hpsPFTauDiscriminationByVTightIsolationMVArun2v1PWoldDMwLT,
+      hpsPFTauDiscriminationByVVLooseIsolationMVArun2v1DBoldDMwLT, hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBdR03oldDMwLT,
+      hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBnewDMwLT, hpsPFTauDiscriminationByVVTightIsolationMVArun2v1DBoldDMwLT,
+      hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWdR03oldDMwLT, hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWnewDMwLT,
+      hpsPFTauDiscriminationByVVTightIsolationMVArun2v1PWoldDMwLT, hpsPFTauFootprintCorrection,
+      hpsPFTauFootprintCorrectiondR03, hpsPFTauNeutralIsoPtSum, hpsPFTauNeutralIsoPtSumWeight,
+      hpsPFTauNeutralIsoPtSumWeightdR03, hpsPFTauNeutralIsoPtSumdR03, hpsPFTauPUcorrPtSum,
+      hpsPFTauPhotonPtSumOutsideSignalCone, hpsPFTauPhotonPtSumOutsideSignalConedR03,
+      hpsPFTauTransverseImpactParameters, hpsPFTauProducer, gedPhotonCore, gedPhotons,
+      hfRecoEcalCandidate, correctedHybridSuperClusters, correctedMulti5x5SuperClustersWithPreshower,
+      generalV0Candidates, inclusiveCandidateSecondaryVertices, inclusiveCandidateSecondaryVerticesCvsL,
+      inclusiveSecondaryVertices, muIsoDepositCalByAssociatorTowers, muIsoDepositJets,
+      muIsoDepositTk, multi5x5PreshowerClusterShape, multi5x5SuperClusters, multi5x5SuperClustersWithPreshower,
+      muonMETValueMapProducer, muons, muonsFromCosmics, muonsFromCosmics1Leg, offlineBeamSpot,
+      offlinePrimaryVertices, offlinePrimaryVerticesWithBS, ootPhotonCore, ootPhotons,
+      particleBasedIsolation, particleFlow, particleFlowBlock, particleFlowClusterECAL,
+      particleFlowClusterHCAL, particleFlowClusterHF, particleFlowClusterHO, particleFlowClusterPS,
+      particleFlowDisplacedVertex, particleFlowEGamma, particleFlowPtrs, particleFlowRecHitECAL,
+      particleFlowRecHitHBHE, particleFlowRecHitHF, particleFlowRecHitHO, particleFlowRecHitPS,
+      particleFlowSuperClusterECAL, particleFlowSuperClusterOOTECAL, particleFlowTmp,
+      particleFlowTmpPtrs, pfChMet, pfChargeBJetTags, pfCombinedCvsBJetTags, pfCombinedCvsLJetTags,
+      pfCombinedInclusiveSecondaryVertexV2BJetTags, pfCombinedMVAV2BJetTags, pfCombinedSecondaryVertexV2BJetTags,
+      pfDeepCMVAJetTags, pfDeepCSVJetTags, pfGhostTrackBJetTags, pfGhostTrackVertexTagInfos,
+      pfImpactParameterTagInfos, pfInclusiveSecondaryVertexFinderCvsLTagInfos, pfInclusiveSecondaryVertexFinderTagInfos,
+      pfJetBProbabilityBJetTags, pfJetProbabilityBJetTags, pfMet, pfSecondaryVertexTagInfos,
+      pfSimpleInclusiveSecondaryVertexHighEffBJetTags, pfSimpleSecondaryVertexHighEffBJetTags,
+      pfTrackCountingHighEffBJetTags, photonCore, photons, reducedEcalRecHitsEB, reducedEcalRecHitsEE,
+      reducedEcalRecHitsES, reducedHcalRecHits, refittedStandAloneMuons, rpcRecHits,
+      selectDigi, siPixelClusters, siStripClusters, softPFElectronBJetTags, softPFElectronsTagInfos,
+      softPFMuonBJetTags, softPFMuonsTagInfos, standAloneMuons, tevMuons, totemRPClusterProducer,
+      totemRPLocalTrackFitter, totemRPRecHitProducer, totemRPUVPatternFinder, totemTimingRecHits,
+      towerMaker, trackExtrapolator, trackRefsForJets, trackerDrivenElectronSeeds,
+      uncleanedOnlyAllConversions, uncleanedOnlyCkfInOutTracksFromConversions, uncleanedOnlyCkfOutInTracksFromConversions,
+      uncleanedOnlyGsfElectronCores, uncleanedOnlyGsfElectrons, zdcreco], lowPtQuadStep: [
+      lowPtQuadStepTracks, offlineBeamSpot, firstStepPrimaryVertices], lowPtQuadStepClusters: [
+      initialStepTracks, siPixelClusters, siStripClusters, initialStep], lowPtQuadStepHitDoublets: [
+      lowPtQuadStepSeedLayers, lowPtQuadStepTrackingRegions, trackerClusterCheck],
+    lowPtQuadStepHitQuadruplets: [lowPtQuadStepHitDoublets, siPixelClusterShapeCache],
+    lowPtQuadStepSeedLayers: [siPixelRecHits, lowPtQuadStepClusters], lowPtQuadStepSeeds: [
+      lowPtQuadStepHitQuadruplets], lowPtQuadStepTrackCandidates: [MeasurementTrackerEvent,
+      lowPtQuadStepSeeds, lowPtQuadStepClusters], lowPtQuadStepTrackingRegions: [
+      offlineBeamSpot], lowPtQuadStepTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      lowPtQuadStepTrackCandidates], lowPtTripletStep: [lowPtTripletStepTracks, offlineBeamSpot,
+      firstStepPrimaryVertices], lowPtTripletStepClusters: [highPtTripletStepTracks,
+      siPixelClusters, siStripClusters, highPtTripletStep, highPtTripletStepClusters],
+    lowPtTripletStepHitDoublets: [lowPtTripletStepSeedLayers, lowPtTripletStepTrackingRegions,
+      trackerClusterCheck], lowPtTripletStepHitTriplets: [lowPtTripletStepHitDoublets,
+      siPixelClusterShapeCache], lowPtTripletStepSeedLayers: [siPixelRecHits, lowPtTripletStepClusters],
+    lowPtTripletStepSeeds: [lowPtTripletStepHitTriplets], lowPtTripletStepTrackCandidates: [
+      MeasurementTrackerEvent, lowPtTripletStepSeeds, lowPtTripletStepClusters], lowPtTripletStepTrackingRegions: [
+      offlineBeamSpot], lowPtTripletStepTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      lowPtTripletStepTrackCandidates], mergedDuplicateDisplacedTracks: [MeasurementTrackerEvent,
+      offlineBeamSpot, duplicateDisplacedTrackCandidates], mergedDuplicateTracks: [
+      MeasurementTrackerEvent, offlineBeamSpot, duplicateTrackCandidates], mixedTripletStep: [
+      mixedTripletStepTracks, offlineBeamSpot, firstStepPrimaryVertices], mixedTripletStepClassifier1: [
+      mixedTripletStepTracks, offlineBeamSpot, firstStepPrimaryVertices], mixedTripletStepClassifier2: [
+      mixedTripletStepTracks, offlineBeamSpot, firstStepPrimaryVertices], mixedTripletStepClusters: [
+      pixelPairStepTracks, siPixelClusters, siStripClusters, pixelPairStep, chargeCut2069Clusters],
+    mixedTripletStepHitDoubletsA: [mixedTripletStepSeedLayersA, mixedTripletStepTrackingRegionsA,
+      trackerClusterCheck], mixedTripletStepHitDoubletsB: [mixedTripletStepSeedLayersB,
+      mixedTripletStepTrackingRegionsB, trackerClusterCheck], mixedTripletStepHitTripletsA: [
+      mixedTripletStepHitDoubletsA], mixedTripletStepHitTripletsB: [mixedTripletStepHitDoubletsB],
+    mixedTripletStepSeedClusterMask: [mixedTripletStepSeeds, siPixelClusters, siStripClusters,
+      detachedTripletStepSeedClusterMask], mixedTripletStepSeedLayersA: [siPixelRecHits,
+      mixedTripletStepClusters], mixedTripletStepSeedLayersB: [siPixelRecHits, mixedTripletStepClusters,
+      siStripMatchedRecHits], mixedTripletStepSeeds: [mixedTripletStepSeedsA, mixedTripletStepSeedsB],
+    mixedTripletStepSeedsA: [mixedTripletStepHitTripletsA, siPixelClusterShapeCache],
+    mixedTripletStepSeedsB: [mixedTripletStepHitTripletsB, siPixelClusterShapeCache],
+    mixedTripletStepTrackCandidates: [MeasurementTrackerEvent, mixedTripletStepSeeds,
+      mixedTripletStepClusters], mixedTripletStepTrackingRegionsA: [offlineBeamSpot],
+    mixedTripletStepTrackingRegionsB: [offlineBeamSpot], mixedTripletStepTracks: [
+      MeasurementTrackerEvent, offlineBeamSpot, mixedTripletStepTrackCandidates],
+    muIsoDepositCalByAssociatorTowers: [muons1stStep], muIsoDepositJets: [muons1stStep],
+    muIsoDepositTk: [muons1stStep], muPFIsoDepositCharged: [muons1stStep, pfAllChargedHadrons],
+    muPFIsoDepositChargedAll: [muons1stStep, pfAllChargedParticles], muPFIsoDepositGamma: [
+      muons1stStep, pfAllPhotons], muPFIsoDepositNeutral: [muons1stStep, pfAllNeutralHadrons],
+    muPFIsoDepositPU: [muons1stStep, pfPileUpAllChargedParticles], muPFIsoValueCharged03: [
+      muPFIsoDepositCharged], muPFIsoValueCharged04: [muPFIsoDepositCharged], muPFIsoValueChargedAll03: [
+      muPFIsoDepositChargedAll], muPFIsoValueChargedAll04: [muPFIsoDepositChargedAll],
+    muPFIsoValueGamma03: [muPFIsoDepositGamma], muPFIsoValueGamma04: [muPFIsoDepositGamma],
+    muPFIsoValueGammaHighThreshold03: [muPFIsoDepositGamma], muPFIsoValueGammaHighThreshold04: [
+      muPFIsoDepositGamma], muPFIsoValueNeutral03: [muPFIsoDepositNeutral], muPFIsoValueNeutral04: [
+      muPFIsoDepositNeutral], muPFIsoValueNeutralHighThreshold03: [muPFIsoDepositNeutral],
+    muPFIsoValueNeutralHighThreshold04: [muPFIsoDepositNeutral], muPFIsoValuePU03: [
+      muPFIsoDepositPU], muPFIsoValuePU04: [muPFIsoDepositPU], muPFMeanDRIsoValueCharged03: [
+      muPFIsoDepositCharged], muPFMeanDRIsoValueCharged04: [muPFIsoDepositCharged],
+    muPFMeanDRIsoValueChargedAll03: [muPFIsoDepositChargedAll], muPFMeanDRIsoValueChargedAll04: [
+      muPFIsoDepositChargedAll], muPFMeanDRIsoValueGamma03: [muPFIsoDepositGamma],
+    muPFMeanDRIsoValueGamma04: [muPFIsoDepositGamma], muPFMeanDRIsoValueGammaHighThreshold03: [
+      muPFIsoDepositGamma], muPFMeanDRIsoValueGammaHighThreshold04: [muPFIsoDepositGamma],
+    muPFMeanDRIsoValueNeutral03: [muPFIsoDepositNeutral], muPFMeanDRIsoValueNeutral04: [
+      muPFIsoDepositNeutral], muPFMeanDRIsoValueNeutralHighThreshold03: [muPFIsoDepositNeutral],
+    muPFMeanDRIsoValueNeutralHighThreshold04: [muPFIsoDepositNeutral], muPFMeanDRIsoValuePU03: [
+      muPFIsoDepositPU], muPFMeanDRIsoValuePU04: [muPFIsoDepositPU], muPFSumDRIsoValueCharged03: [
+      muPFIsoDepositCharged], muPFSumDRIsoValueCharged04: [muPFIsoDepositCharged],
+    muPFSumDRIsoValueChargedAll03: [muPFIsoDepositChargedAll], muPFSumDRIsoValueChargedAll04: [
+      muPFIsoDepositChargedAll], muPFSumDRIsoValueGamma03: [muPFIsoDepositGamma],
+    muPFSumDRIsoValueGamma04: [muPFIsoDepositGamma], muPFSumDRIsoValueGammaHighThreshold03: [
+      muPFIsoDepositGamma], muPFSumDRIsoValueGammaHighThreshold04: [muPFIsoDepositGamma],
+    muPFSumDRIsoValueNeutral03: [muPFIsoDepositNeutral], muPFSumDRIsoValueNeutral04: [
+      muPFIsoDepositNeutral], muPFSumDRIsoValueNeutralHighThreshold03: [muPFIsoDepositNeutral],
+    muPFSumDRIsoValueNeutralHighThreshold04: [muPFIsoDepositNeutral], muPFSumDRIsoValuePU03: [
+      muPFIsoDepositPU], muPFSumDRIsoValuePU04: [muPFIsoDepositPU], muidAllArbitrated: [
+      muons1stStep], muidGMStaChiCompatibility: [muons1stStep], muidGMTkChiCompatibility: [
+      muons1stStep], muidGMTkKinkTight: [muons1stStep], muidGlobalMuonPromptTight: [
+      muons1stStep], muidRPCMuLoose: [muons1stStep], muidTM2DCompatibilityLoose: [
+      muons1stStep], muidTM2DCompatibilityTight: [muons1stStep], muidTMLastStationAngLoose: [
+      muons1stStep], muidTMLastStationAngTight: [muons1stStep], muidTMLastStationLoose: [
+      muons1stStep], muidTMLastStationOptimizedLowPtLoose: [muons1stStep], muidTMLastStationOptimizedLowPtTight: [
+      muons1stStep], muidTMLastStationTight: [muons1stStep], muidTMOneStationAngLoose: [
+      muons1stStep], muidTMOneStationAngTight: [muons1stStep], muidTMOneStationLoose: [
+      muons1stStep], muidTMOneStationTight: [muons1stStep], muidTrackerMuonArbitrated: [
+      muons1stStep], multi5x5BasicClustersCleaned: [ecalRecHit], multi5x5BasicClustersUncleaned: [
+      ecalRecHit], multi5x5PreshowerClusterShape: [ecalPreshowerRecHit, correctedMulti5x5SuperClustersWithPreshower],
+    multi5x5SuperClusters: [multi5x5BasicClustersCleaned, multi5x5SuperClustersCleaned,
+      multi5x5BasicClustersUncleaned, multi5x5SuperClustersUncleaned], multi5x5SuperClustersCleaned: [
+      multi5x5BasicClustersCleaned], multi5x5SuperClustersUncleaned: [multi5x5BasicClustersCleaned],
+    multi5x5SuperClustersWithPreshower: [ecalPreshowerRecHit, multi5x5SuperClusters],
+    muonEcalDetIds: [muons1stStep], muonMETValueMapProducer: [muons, offlineBeamSpot,
+      towerMaker], muonRPCNewDigis: [rpcTwinMuxRawToDigi, omtfStage2Digis, rpcCPPFRawToDigi],
+    muonSeededSeedsInOut: [earlyMuons], muonSeededSeedsOutIn: [earlyMuons, MeasurementTrackerEvent],
+    muonSeededSeedsOutInDisplaced: [earlyDisplacedMuons, MeasurementTrackerEvent],
+    muonSeededTrackCandidatesInOut: [MeasurementTrackerEvent, muonSeededSeedsInOut],
+    muonSeededTrackCandidatesOutIn: [MeasurementTrackerEvent, muonSeededSeedsOutIn],
+    muonSeededTrackCandidatesOutInDisplaced: [MeasurementTrackerEvent, muonSeededSeedsOutInDisplaced],
+    muonSeededTracksInOut: [MeasurementTrackerEvent, offlineBeamSpot, muonSeededTrackCandidatesInOut],
+    muonSeededTracksInOutClassifier: [muonSeededTracksInOut, offlineBeamSpot, firstStepPrimaryVertices],
+    muonSeededTracksOutIn: [MeasurementTrackerEvent, offlineBeamSpot, muonSeededTrackCandidatesOutIn],
+    muonSeededTracksOutInClassifier: [muonSeededTracksOutIn, offlineBeamSpot, firstStepPrimaryVertices],
+    muonSeededTracksOutInDisplaced: [MeasurementTrackerEvent, offlineBeamSpot, muonSeededTrackCandidatesOutInDisplaced],
+    muonSeededTracksOutInDisplacedClassifier: [muonSeededTracksOutInDisplaced, offlineBeamSpot,
+      firstStepPrimaryVertices], muonShowerInformation: [dt1DRecHits, csc2DRecHits,
+      cscSegments, dt4DSegments, muons1stStep], muons: [muons1stStep, particleFlowTmp,
+      muIsoDepositTk, muIsoDepositJets, muIsoDepositCalByAssociatorTowers, muidTMLastStationOptimizedLowPtLoose,
+      muidTMLastStationOptimizedLowPtTight, muidTM2DCompatibilityLoose, muidTM2DCompatibilityTight,
+      muidTrackerMuonArbitrated, muidTMLastStationAngLoose, muidGlobalMuonPromptTight,
+      muidGMStaChiCompatibility, muidTMLastStationAngTight, muidGMTkChiCompatibility,
+      muidTMOneStationAngTight, muidTMOneStationAngLoose, muidTMLastStationLoose,
+      muidTMLastStationTight, muidTMOneStationTight, muidTMOneStationLoose, muidAllArbitrated,
+      muidGMTkKinkTight, muidRPCMuLoose, muonShowerInformation, cosmicsVeto, muPFMeanDRIsoValueChargedAll03,
+      muPFMeanDRIsoValueCharged03, muPFMeanDRIsoValueNeutral03, muPFMeanDRIsoValueNeutralHighThreshold03,
+      muPFMeanDRIsoValueGamma03, muPFMeanDRIsoValueGammaHighThreshold03, muPFMeanDRIsoValuePU03,
+      muPFMeanDRIsoValueChargedAll04, muPFMeanDRIsoValueCharged04, muPFMeanDRIsoValueNeutral04,
+      muPFMeanDRIsoValueNeutralHighThreshold04, muPFMeanDRIsoValueGamma04, muPFMeanDRIsoValueGammaHighThreshold04,
+      muPFMeanDRIsoValuePU04, muPFSumDRIsoValueChargedAll03, muPFSumDRIsoValueCharged03,
+      muPFSumDRIsoValueNeutral03, muPFSumDRIsoValueNeutralHighThreshold03, muPFSumDRIsoValueGamma03,
+      muPFSumDRIsoValueGammaHighThreshold03, muPFSumDRIsoValuePU03, muPFSumDRIsoValueChargedAll04,
+      muPFSumDRIsoValueCharged04, muPFSumDRIsoValueNeutral04, muPFSumDRIsoValueNeutralHighThreshold04,
+      muPFSumDRIsoValueGamma04, muPFSumDRIsoValueGammaHighThreshold04, muPFSumDRIsoValuePU04,
+      muPFIsoValueChargedAll03, muPFIsoValueCharged03, muPFIsoValueNeutral03, muPFIsoValueNeutralHighThreshold03,
+      muPFIsoValueGamma03, muPFIsoValueGammaHighThreshold03, muPFIsoValuePU03, muPFIsoValueChargedAll04,
+      muPFIsoValueCharged04, muPFIsoValueNeutral04, muPFIsoValueNeutralHighThreshold04,
+      muPFIsoValueGamma04, muPFIsoValueGammaHighThreshold04, muPFIsoValuePU04, offlinePrimaryVertices],
+    muons1stStep: [ecalRecHit, hbhereco, horeco, dt4DSegments, cscSegments, rpcRecHits,
+      towerMaker, generalTracks, offlineBeamSpot, ak4CaloJets, glbTrackQual, globalMuons,
+      standAloneMuons, tevMuons], muonsFromCosmics: [ecalRecHit, hbhereco, horeco,
+      dt4DCosmicSegments, cscSegments, rpcRecHits, cosmicMuons], muonsFromCosmics1Leg: [
+      ecalRecHit, hbhereco, horeco, dt4DCosmicSegments, cscSegments, rpcRecHits, cosmicMuons1Leg],
+    mvaElectrons: [offlinePrimaryVertices, electronsWithPresel], newCombinedSeeds: [
+      initialStepSeeds, highPtTripletStepSeeds, mixedTripletStepSeeds, pixelLessStepSeeds,
+      tripletElectronSeeds, pixelPairElectronSeeds, stripPairElectronSeeds, lowPtTripletStepSeeds,
+      lowPtQuadStepSeeds, detachedTripletStepSeeds, detachedQuadStepSeeds, pixelPairStepSeeds],
+    offlinePrimaryVertices: [trackRefsForJetsBeforeSorting, unsortedOfflinePrimaryVertices,
+      ak4CaloJetsForTrk], offlinePrimaryVerticesWithBS: [trackRefsForJetsBeforeSorting,
+      unsortedOfflinePrimaryVertices, ak4CaloJetsForTrk], ootPhotonCore: [particleFlowSuperClusterOOTECAL,
+      conversions, electronMergedSeeds], ootPhotonEcalPFClusterIsolationProducer: [
+      ootPhotonsTmp, particleFlowClusterOOTECAL], ootPhotonHcalPFClusterIsolationProducer: [
+      ootPhotonsTmp, particleFlowClusterHCAL], ootPhotons: [ootPhotonsTmp, particleFlowTmp,
+      ootPhotonEcalPFClusterIsolationProducer, ootPhotonHcalPFClusterIsolationProducer,
+      ecalRecHit, ecalPreshowerRecHit, offlinePrimaryVerticesWithBS, towerMaker],
+    ootPhotonsTmp: [ootPhotonCore, ecalRecHit, ecalPreshowerRecHit, offlinePrimaryVerticesWithBS,
+      towerMaker, generalTracks, offlineBeamSpot], outInConversionTrackProducer: [
+      offlineBeamSpot, ckfOutInTracksFromConversions], particleBasedIsolation: [gedPhotons,
+      gedPhotonsTmp, gedGsfElectrons, gedGsfElectronsTmp, particleFlow, particleFlowEGamma],
+    particleBasedIsolationTmp: [gedPhotonsTmp, gedGsfElectronsTmp, particleFlowTmp,
+      particleFlowEGamma], particleFlow: [particleFlowTmp, gedGsfElectrons, gedPhotons,
+      muons], particleFlowBlock: [pfTrackElec, particleFlowSuperClusterECAL, towerMaker,
+      pfConversions, pfDisplacedTrackerVertex, pfTrack, muons1stStep, particleFlowClusterECAL,
+      particleFlowClusterHCAL, particleFlowBadHcalPseudoCluster, particleFlowClusterHO,
+      particleFlowClusterHF, particleFlowClusterPS], particleFlowClusterECAL: [particleFlowClusterECALUncorrected,
+      particleFlowClusterPS, ecalRecHit, bunchSpacingProducer, ecalDigis], particleFlowClusterECALUncorrected: [
+      particleFlowRecHitECAL], particleFlowClusterHBHE: [particleFlowRecHitHBHE],
+    particleFlowClusterHCAL: [particleFlowClusterHBHE], particleFlowClusterHF: [particleFlowRecHitHF],
+    particleFlowClusterHO: [particleFlowRecHitHO], particleFlowClusterOOTECAL: [particleFlowClusterOOTECALUncorrected,
+      particleFlowClusterPS, ecalRecHit, bunchSpacingProducer, ecalDigis], particleFlowClusterOOTECALUncorrected: [
+      particleFlowRecHitOOTECAL], particleFlowClusterPS: [particleFlowRecHitPS], particleFlowDisplacedVertex: [
+      particleFlowDisplacedVertexCandidate, offlinePrimaryVertices, offlineBeamSpot],
+    particleFlowDisplacedVertexCandidate: [generalTracks, offlinePrimaryVertices,
+      offlineBeamSpot], particleFlowEGamma: [particleFlowBlock, particleFlowClusterECAL,
+      offlinePrimaryVertices], particleFlowForChargedMET: [particleFlow, offlinePrimaryVertices],
+    particleFlowPtrs: [particleFlow], particleFlowRecHitECAL: [ecalRecHit], particleFlowRecHitHBHE: [
+      hbhereco], particleFlowRecHitHF: [hfreco], particleFlowRecHitHO: [horeco], particleFlowRecHitOOTECAL: [
+      ecalRecHit], particleFlowRecHitPS: [ecalPreshowerRecHit], particleFlowSuperClusterECAL: [
+      particleFlowClusterECAL, offlineBeamSpot, ecalRecHit, offlinePrimaryVertices],
+    particleFlowSuperClusterOOTECAL: [particleFlowClusterOOTECAL, offlineBeamSpot,
+      ecalRecHit, offlinePrimaryVertices], particleFlowTmp: [particleFlowBlock, muons1stStep,
+      mvaElectrons, particleFlowEGamma, gedGsfElectronsTmp, gedPhotonsTmp, particleFlowRecHitHF,
+      offlinePrimaryVertices], particleFlowTmpPtrs: [particleFlowTmp], pfAllChargedHadrons: [
+      pfNoPileUpIso], pfAllChargedParticles: [pfNoPileUpIso], pfAllNeutralHadrons: [
+      pfNoPileUpIso], pfAllNeutralHadronsAndPhotons: [pfNoPileUpIso], pfAllPhotons: [
+      pfNoPileUpIso], pfChMet: [particleFlowForChargedMET], pfChargeBJetTags: [pfImpactParameterTagInfos,
+      pfInclusiveSecondaryVertexFinderTagInfos, softPFMuonsTagInfos, softPFElectronsTagInfos],
+    pfCombinedCvsBJetTags: [pfImpactParameterTagInfos, pfInclusiveSecondaryVertexFinderCvsLTagInfos,
+      softPFMuonsTagInfos, softPFElectronsTagInfos], pfCombinedCvsLJetTags: [pfImpactParameterTagInfos,
+      pfInclusiveSecondaryVertexFinderCvsLTagInfos, softPFMuonsTagInfos, softPFElectronsTagInfos],
+    pfCombinedInclusiveSecondaryVertexV2BJetTags: [pfImpactParameterTagInfos, pfInclusiveSecondaryVertexFinderTagInfos],
+    pfCombinedMVAV2BJetTags: [pfImpactParameterTagInfos, pfSecondaryVertexTagInfos,
+      pfInclusiveSecondaryVertexFinderTagInfos, softPFMuonsTagInfos, softPFElectronsTagInfos],
+    pfCombinedSecondaryVertexV2BJetTags: [pfImpactParameterTagInfos, pfSecondaryVertexTagInfos],
+    pfConversions: [allConversions, offlinePrimaryVertices], pfDeepCMVAJetTags: [
+      pfDeepCMVATagInfos], pfDeepCMVATagInfos: [pfDeepCSVTagInfos, pfImpactParameterTagInfos,
+      softPFMuonsTagInfos, softPFElectronsTagInfos], pfDeepCSVJetTags: [pfDeepCSVTagInfos],
+    pfDeepCSVTagInfos: [pfInclusiveSecondaryVertexFinderTagInfos], pfDisplacedTrackerVertex: [
+      particleFlowDisplacedVertex, generalTracks], pfGhostTrackBJetTags: [pfImpactParameterTagInfos,
+      pfGhostTrackVertexTagInfos], pfGhostTrackVertexTagInfos: [pfImpactParameterTagInfos,
+      offlineBeamSpot], pfImpactParameterTagInfos: [ak4PFJetsCHS, particleFlow, offlinePrimaryVertices],
+    pfInclusiveSecondaryVertexFinderCvsLTagInfos: [pfImpactParameterTagInfos, offlineBeamSpot,
+      inclusiveCandidateSecondaryVerticesCvsL], pfInclusiveSecondaryVertexFinderTagInfos: [
+      pfImpactParameterTagInfos, offlineBeamSpot, inclusiveCandidateSecondaryVertices],
+    pfJetBProbabilityBJetTags: [pfImpactParameterTagInfos], pfJetProbabilityBJetTags: [
+      pfImpactParameterTagInfos], pfMet: [particleFlow], pfNoPileUp: [pfPileUp, particleFlowTmpPtrs],
+    pfNoPileUpCandidates: [pfNoPileUpIso], pfNoPileUpIso: [pfPileUpIso, particleFlowTmpPtrs],
+    pfNoPileUpJME: [pfPileUpJME, particleFlowPtrs], pfPileUp: [particleFlowTmpPtrs,
+      offlinePrimaryVertices], pfPileUpAllChargedParticles: [pfPileUpIso], pfPileUpIso: [
+      particleFlowTmpPtrs, offlinePrimaryVertices], pfPileUpJME: [particleFlowPtrs,
+      goodOfflinePrimaryVertices], pfRecoTauTagInfoProducer: [particleFlow, ak4PFJetTracksAssociatorAtVertex,
+      offlinePrimaryVertices], pfSecondaryVertexTagInfos: [pfImpactParameterTagInfos,
+      offlineBeamSpot], pfSimpleInclusiveSecondaryVertexHighEffBJetTags: [pfInclusiveSecondaryVertexFinderTagInfos],
+    pfSimpleSecondaryVertexHighEffBJetTags: [pfSecondaryVertexTagInfos], pfTrack: [
+      generalTracks, electronGsfTracks, muons1stStep, offlinePrimaryVertices], pfTrackCountingHighEffBJetTags: [
+      pfImpactParameterTagInfos], pfTrackElec: [electronGsfTracks, pfTrack, offlinePrimaryVertices,
+      particleFlowClusterECAL, pfDisplacedTrackerVertex, pfConversions, pfV0], pfV0: [
+      generalV0Candidates], photonConvTrajSeedFromSingleLeg: [convLayerPairs, offlineBeamSpot,
+      firstStepPrimaryVertices, generalTracks], photonCore: [correctedHybridSuperClusters,
+      correctedMulti5x5SuperClustersWithPreshower, electronMergedSeeds], photonEcalPFClusterIsolationProducer: [
+      gedPhotonsTmp, particleFlowClusterECAL], photonHcalPFClusterIsolationProducer: [
+      gedPhotonsTmp, particleFlowClusterHCAL], photons: [photonCore, ecalRecHit, ecalPreshowerRecHit,
+      offlinePrimaryVerticesWithBS, towerMaker, generalTracks, offlineBeamSpot], pixelLessStep: [
+      pixelLessStepTracks, offlineBeamSpot, firstStepPrimaryVertices], pixelLessStepClassifier1: [
+      pixelLessStepTracks, offlineBeamSpot, firstStepPrimaryVertices], pixelLessStepClassifier2: [
+      pixelLessStepTracks, offlineBeamSpot, firstStepPrimaryVertices], pixelLessStepClusters: [
+      mixedTripletStepTracks, siPixelClusters, siStripClusters, mixedTripletStep,
+      mixedTripletStepClusters], pixelLessStepHitDoublets: [pixelLessStepSeedLayers,
+      pixelLessStepTrackingRegions, trackerClusterCheck], pixelLessStepHitTriplets: [
+      pixelLessStepHitDoublets], pixelLessStepSeedClusterMask: [pixelLessStepSeeds,
+      siPixelClusters, siStripClusters, mixedTripletStepSeedClusterMask], pixelLessStepSeedLayers: [
+      siStripMatchedRecHits, pixelLessStepClusters], pixelLessStepSeeds: [pixelLessStepHitTriplets],
+    pixelLessStepTrackCandidates: [MeasurementTrackerEvent, pixelLessStepSeeds, pixelLessStepClusters],
+    pixelLessStepTrackingRegions: [offlineBeamSpot], pixelLessStepTracks: [MeasurementTrackerEvent,
+      offlineBeamSpot, pixelLessStepTrackCandidates], pixelPairElectronHitDoublets: [
+      pixelPairElectronSeedLayers, pixelPairElectronTrackingRegions, trackerClusterCheck],
+    pixelPairElectronSeedLayers: [siPixelRecHits, tripletElectronClusterMask], pixelPairElectronSeeds: [
+      pixelPairElectronHitDoublets], pixelPairElectronTrackingRegions: [offlineBeamSpot,
+      firstStepPrimaryVertices], pixelPairStep: [pixelPairStepTracks, offlineBeamSpot,
+      firstStepPrimaryVertices], pixelPairStepClusters: [detachedTripletStepTracks,
+      siPixelClusters, siStripClusters, detachedTripletStep, detachedTripletStepClusters],
+    pixelPairStepHitDoublets: [pixelPairStepSeedLayers, pixelPairStepTrackingRegions,
+      trackerClusterCheck], pixelPairStepHitDoubletsB: [pixelPairStepTrackingRegionsSeedLayersB,
+      trackerClusterCheck], pixelPairStepSeedLayers: [siPixelRecHits, pixelPairStepClusters],
+    pixelPairStepSeeds: [pixelPairStepSeedsA, pixelPairStepSeedsB], pixelPairStepSeedsA: [
+      pixelPairStepHitDoublets, siPixelClusterShapeCache], pixelPairStepSeedsB: [
+      pixelPairStepHitDoubletsB, siPixelClusterShapeCache], pixelPairStepTrackCandidates: [
+      MeasurementTrackerEvent, pixelPairStepSeeds, pixelPairStepClusters], pixelPairStepTrackingRegions: [
+      offlineBeamSpot, firstStepPrimaryVertices], pixelPairStepTrackingRegionsSeedLayersB: [
+      siPixelRecHits, pixelPairStepClusters, offlineBeamSpot, firstStepPrimaryVertices,
+      siPixelDigis], pixelPairStepTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      pixelPairStepTrackCandidates], preDuplicateMergingDisplacedTracks: [muonSeededTracksInOut,
+      muonSeededTracksOutInDisplaced, muonSeededTracksInOutClassifier, muonSeededTracksOutInDisplacedClassifier],
+    preDuplicateMergingGeneralTracks: [earlyGeneralTracks, muonSeededTracksInOut,
+      muonSeededTracksOutIn, muonSeededTracksInOutClassifier, muonSeededTracksOutInClassifier],
+    recoTauAK4PFJets08Region: [particleFlow, ak4PFJets], recoTauPileUpVertices: [
+      offlinePrimaryVertices], reducedEcalRecHitsEB: [ecalRecHit, interestingEcalDetIdEB,
+      interestingEcalDetIdEBU, interestingEcalDetIdPFEB, interestingEcalDetIdRefinedEB,
+      interestingEcalDetIdOOTPFEB, interestingGedEleIsoDetIdEB, interestingGedGamIsoDetIdEB,
+      interestingOotGamIsoDetIdEB, interestingGamIsoDetIdEB, muonEcalDetIds, interestingTrackEcalDetIds],
+    reducedEcalRecHitsEE: [ecalRecHit, interestingEcalDetIdEE, interestingEcalDetIdPFEE,
+      interestingEcalDetIdRefinedEE, interestingEcalDetIdOOTPFEE, interestingGedEleIsoDetIdEE,
+      interestingGedGamIsoDetIdEE, interestingOotGamIsoDetIdEE, interestingGamIsoDetIdEE,
+      muonEcalDetIds, interestingTrackEcalDetIds], reducedEcalRecHitsES: [ecalPreshowerRecHit,
+      correctedMulti5x5SuperClustersWithPreshower, interestingEcalDetIdPFES, interestingEcalDetIdRefinedES,
+      interestingEcalDetIdOOTPFES, interestingGedEgammaIsoESDetId, interestingOotEgammaIsoESDetId],
+    reducedHcalRecHits: [hbhereco, hfreco, horeco, interestingGedEgammaIsoHCALDetId,
+      interestingOotEgammaIsoHCALDetId], refittedStandAloneMuons: [offlineBeamSpot,
+      dt4DSegments, cscSegments, rpcRecHits, gemRecHits, ancientMuonSeed], rpcNewRecHits: [
+      muonRPCNewDigis], rpcRecHits: [muonRPCDigis], selectDigi: [uncleanedHybridSuperClusters,
+      correctedMulti5x5SuperClustersWithPreshower, ecalRecHit, ecalDigis], siPixelClusterShapeCache: [
+      siPixelClusters], siPixelClusterShapeCachePreSplitting: [siPixelClustersPreSplitting],
+    siPixelClusters: [siPixelClustersPreSplitting, firstStepPrimaryVerticesPreSplitting,
+      jetsForCoreTrackingPreSplitting], siPixelClustersPreSplitting: [siPixelDigis],
+    siPixelRecHits: [siPixelClusters], siPixelRecHitsPreSplitting: [siPixelClustersPreSplitting],
+    siStripClusters: [siStripDigis, siStripZeroSuppression], siStripMatchedRecHits: [
+      siStripClusters], siStripZeroSuppression: [siStripDigis], softPFElectronBJetTags: [
+      softPFElectronsTagInfos], softPFElectronsTagInfos: [ak4PFJetsCHS, gedGsfElectrons,
+      offlinePrimaryVertices, offlineBeamSpot, allConversions], softPFMuonBJetTags: [
+      softPFMuonsTagInfos], softPFMuonsTagInfos: [ak4PFJetsCHS, muons, offlinePrimaryVertices],
+    standAloneMuons: [offlineBeamSpot, dt4DSegments, cscSegments, rpcRecHits, gemRecHits,
+      ancientMuonSeed], stripPairElectronHitDoublets: [stripPairElectronSeedLayers,
+      stripPairElectronTrackingRegions, trackerClusterCheck], stripPairElectronSeedLayers: [
+      siStripMatchedRecHits, tripletElectronClusterMask], stripPairElectronSeeds: [
+      stripPairElectronHitDoublets], stripPairElectronTrackingRegions: [offlineBeamSpot],
+    tevMuons: [globalMuons, dt1DRecHits, csc2DRecHits, gemRecHits, cscSegments, dt4DSegments,
+      offlineBeamSpot], tobTecStep: [tobTecStepTracks, offlineBeamSpot, firstStepPrimaryVertices],
+    tobTecStepClassifier1: [tobTecStepTracks, offlineBeamSpot, firstStepPrimaryVertices],
+    tobTecStepClassifier2: [tobTecStepTracks, offlineBeamSpot, firstStepPrimaryVertices],
+    tobTecStepClusters: [pixelLessStepTracks, siPixelClusters, siStripClusters, pixelLessStep,
+      pixelLessStepClusters], tobTecStepHitDoubletsPair: [tobTecStepSeedLayersPair,
+      tobTecStepTrackingRegionsPair, trackerClusterCheck], tobTecStepHitDoubletsTripl: [
+      tobTecStepSeedLayersTripl, tobTecStepTrackingRegionsTripl, trackerClusterCheck],
+    tobTecStepHitTripletsTripl: [tobTecStepHitDoubletsTripl], tobTecStepSeedLayersPair: [
+      siStripMatchedRecHits, tobTecStepClusters], tobTecStepSeedLayersTripl: [siStripMatchedRecHits,
+      tobTecStepClusters], tobTecStepSeeds: [tobTecStepSeedsTripl, tobTecStepSeedsPair],
+    tobTecStepSeedsPair: [tobTecStepHitDoubletsPair], tobTecStepSeedsTripl: [tobTecStepHitTripletsTripl],
+    tobTecStepTrackCandidates: [MeasurementTrackerEvent, tobTecStepSeeds, tobTecStepClusters],
+    tobTecStepTrackingRegionsPair: [offlineBeamSpot], tobTecStepTrackingRegionsTripl: [
+      offlineBeamSpot], tobTecStepTracks: [MeasurementTrackerEvent, offlineBeamSpot,
+      tobTecStepTrackCandidates], totemRPClusterProducer: [totemRPRawToDigi], totemRPLocalTrackFitter: [
+      totemRPUVPatternFinder], totemRPRecHitProducer: [totemRPClusterProducer], totemRPUVPatternFinder: [
+      totemRPRecHitProducer], totemTimingRecHits: [totemTimingRawToDigi], towerMaker: [
+      hbhereco, horeco, hfreco, ecalRecHit], towerMakerWithHO: [hbhereco, horeco,
+      hfreco, ecalRecHit], trackExtrapolator: [generalTracks], trackRefsForJets: [
+      trackWithVertexRefSelector], trackRefsForJetsBeforeSorting: [trackWithVertexRefSelectorBeforeSorting],
+    trackVertexArbitrator: [offlinePrimaryVertices, vertexMerger, offlineBeamSpot,
+      generalTracks], trackWithVertexRefSelector: [generalTracks, offlinePrimaryVertices],
+    trackWithVertexRefSelectorBeforeSorting: [generalTracks, unsortedOfflinePrimaryVertices],
+    trackerDrivenElectronSeeds: [generalTracks, particleFlowClusterECAL, particleFlowClusterHCAL,
+      particleFlowClusterPS], tripletElectronClusterMask: [tripletElectronSeeds, siPixelClusters,
+      siStripClusters, pixelLessStepSeedClusterMask], tripletElectronHitDoublets: [
+      tripletElectronSeedLayers, tripletElectronTrackingRegions, trackerClusterCheck],
+    tripletElectronHitTriplets: [tripletElectronHitDoublets], tripletElectronSeedLayers: [
+      siPixelRecHits, pixelLessStepSeedClusterMask], tripletElectronSeeds: [tripletElectronHitTriplets],
+    tripletElectronTrackingRegions: [offlineBeamSpot], uncleanedHybridSuperClusters: [
+      ecalRecHit], uncleanedOnlyAllConversions: [uncleanedOnlyGsfGeneralInOutOutInConversionTrackMerger,
+      offlinePrimaryVerticesWithBS, hybridSuperClusters, multi5x5SuperClusters, uncleanedOnlyCorrectedHybridSuperClusters,
+      uncleanedOnlyCorrectedMulti5x5SuperClustersWithPreshower], uncleanedOnlyCkfInOutTracksFromConversions: [
+      MeasurementTrackerEvent, offlineBeamSpot, uncleanedOnlyConversionTrackCandidates],
+    uncleanedOnlyCkfOutInTracksFromConversions: [MeasurementTrackerEvent, offlineBeamSpot,
+      uncleanedOnlyConversionTrackCandidates], uncleanedOnlyConversionTrackCandidates: [
+      MeasurementTrackerEvent, offlineBeamSpot, hybridSuperClusters, multi5x5SuperClusters,
+      uncleanedOnlyCorrectedHybridSuperClusters, uncleanedOnlyCorrectedMulti5x5SuperClustersWithPreshower,
+      ecalRecHit, towerMaker], uncleanedOnlyCorrectedHybridSuperClusters: [ecalRecHit,
+      hybridSuperClusters], uncleanedOnlyCorrectedMulti5x5SuperClustersWithPreshower: [
+      ecalRecHit, uncleanedOnlyMulti5x5SuperClustersWithPreshower], uncleanedOnlyElectronCkfTrackCandidates: [
+      MeasurementTrackerEvent, uncleanedOnlyElectronSeeds], uncleanedOnlyElectronGsfTracks: [
+      MeasurementTrackerEvent, offlineBeamSpot, uncleanedOnlyElectronCkfTrackCandidates],
+    uncleanedOnlyElectronSeeds: [newCombinedSeeds, offlineBeamSpot, towerMaker, offlinePrimaryVerticesWithBS,
+      MeasurementTrackerEvent, uncleanedOnlyCorrectedHybridSuperClusters, uncleanedOnlyCorrectedMulti5x5SuperClustersWithPreshower],
+    uncleanedOnlyGeneralConversionTrackProducer: [offlineBeamSpot, generalTracks],
+    uncleanedOnlyGeneralInOutOutInConversionTrackMerger: [uncleanedOnlyInOutOutInConversionTrackMerger,
+      uncleanedOnlyGeneralConversionTrackProducer], uncleanedOnlyGsfConversionTrackProducer: [
+      offlineBeamSpot, uncleanedOnlyElectronGsfTracks], uncleanedOnlyGsfElectronCores: [
+      uncleanedOnlyPfTrackElec, uncleanedOnlyElectronGsfTracks, generalTracks], uncleanedOnlyGsfElectrons: [
+      uncleanedOnlyGsfElectronCores, towerMaker, ecalRecHit, generalTracks, uncleanedOnlyElectronSeeds,
+      offlineBeamSpot, uncleanedOnlyPfTrackElec, offlinePrimaryVertices], uncleanedOnlyGsfGeneralInOutOutInConversionTrackMerger: [
+      uncleanedOnlyGeneralInOutOutInConversionTrackMerger, uncleanedOnlyGsfConversionTrackProducer],
+    uncleanedOnlyInOutConversionTrackProducer: [offlineBeamSpot, uncleanedOnlyCkfInOutTracksFromConversions],
+    uncleanedOnlyInOutOutInConversionTrackMerger: [uncleanedOnlyInOutConversionTrackProducer,
+      uncleanedOnlyOutInConversionTrackProducer], uncleanedOnlyMulti5x5SuperClustersWithPreshower: [
+      ecalPreshowerRecHit, multi5x5SuperClusters], uncleanedOnlyOutInConversionTrackProducer: [
+      offlineBeamSpot, uncleanedOnlyCkfOutInTracksFromConversions], uncleanedOnlyPfConversions: [
+      allConversions, offlinePrimaryVertices], uncleanedOnlyPfTrack: [generalTracks,
+      uncleanedOnlyElectronGsfTracks, muons1stStep, offlinePrimaryVertices], uncleanedOnlyPfTrackElec: [
+      uncleanedOnlyElectronGsfTracks, uncleanedOnlyPfTrack, offlinePrimaryVertices,
+      particleFlowClusterECAL, pfDisplacedTrackerVertex, uncleanedOnlyPfConversions,
+      pfV0], unsortedOfflinePrimaryVertices: [generalTracks, offlineBeamSpot], vertexMerger: [
+      inclusiveVertexFinder], zdcreco: [hcalDigis, castorDigis]}}
