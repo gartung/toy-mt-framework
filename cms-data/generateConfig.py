@@ -23,34 +23,38 @@ twospace=re.compile('^  \D*')
 fourspace=re.compile('^    \D*')
 modules=re.compile('.*modules:$')
 consumes=re.compile('.*consumes:$')
+tickspace=re.compile("' '")
 
 for l in f:
-    values = l.split("'")
     if twospace.match(l):
+        fields=tickspace.split(l)
         if modules.match(l):
-            processName = values[1].replace("'","")
-#            print "process '%s' modules:" % processName
+            values = fields[0].split("'")
+            processName = values[-2]
             moduleRelations[processName]=list()
         if consumes.match(l):
-            processName = values[1].replace("'","")
-#            print "process '%s' consumes:" % processName
+            values = fields[0].split("'")
+            processName = values[-2]
             moduleConsumes[processName]=list()
     if fourspace.match(l):
-        if len(values) == 7:
-            if not values[-2] == 'RECO':
-                moduleConsumes[processName].append(values[1])
-#                print "\t%s" % values
-        if len(values) == 3:
-            if values[0].endswith('/'):
-                moduleRelations[processName].append(values[1])
-#                print "\t%s" % values
+        fields=tickspace.split(l)
+        if len(fields) == 3:
+            if not fields[-1] == "RECO'\n":
+                labels=fields[0].split("'")
+                if not labels[-1] == '@EmptyLabel@':
+                    moduleConsumes[processName].append(labels[-1])
+        if len(fields) == 1:
+            labels=fields[0].split("'")
+            if len(labels) > 1:
+                if not labels[-2] == '':
+                    moduleRelations[processName].append(labels[-2])
 
             
-with open('module-storage2get.yaml', 'w') as outfile:
-   outfile.write(yaml.dump(moduleConsumes, default_flow_style=True))
+#with open('module-storage2get.yaml', 'w') as outfile:
+#   outfile.write(yaml.dump(moduleConsumes, default_flow_style=True))
 
-with open('module-relations.yaml', 'w') as outfile:
-   outfile.write(yaml.dump(moduleRelations, default_flow_style=True))
+#with open('module-relations.yaml', 'w') as outfile:
+#   outfile.write(yaml.dump(moduleRelations, default_flow_style=True))
 
 with open('module-timings.yaml', 'r') as infile:
     moduleTimings=yaml.load(infile)
@@ -62,11 +66,9 @@ with open('module-timings.yaml', 'r') as infile:
 #    moduleRelations=yaml.load(infile)
 #
 
-storageToGet=set()
+storageToGet=list()
 for mod,consumes in moduleConsumes.items():
-    for c in consumes:
-        storageToGet.add(c)
-
+    storageToGet.append({"label":mod, "product":consumes})
 nEvents="100"
 recotimes=moduleTimings['RECOoutput']
 
