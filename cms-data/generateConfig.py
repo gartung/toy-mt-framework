@@ -89,7 +89,7 @@ config = {
    "filters" :
    [
      { "@label" : "output",
-       "@type" : "demo::EventTimesSleepingPassFilter",
+       "@type" : "demo::EventTimesBusyWaitPassFilter",
        "threadType" : "ThreadSafeBetweenModules",
        "eventTimes": recotimes[50:150],
        "toGet" : storageToGet
