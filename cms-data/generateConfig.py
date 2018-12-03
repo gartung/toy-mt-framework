@@ -37,7 +37,7 @@ for l in f:
             moduleConsumes[processName]=list()
     if fourspace.match(l):
         if len(values) == 7:
-            if not values[-2] == 'reRECO':
+            if not values[-2] == 'RECO':
                 moduleConsumes[processName].append(values[1])
 #                print "\t%s" % values
         if len(values) == 3:
