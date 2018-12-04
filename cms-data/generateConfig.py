@@ -62,11 +62,8 @@ with open('module-storage2get.json', 'w') as outfile:
 with open('module-relations.json', 'w') as outfile:
    outfile.write(json.dumps(moduleRelations, indent=4))
 
-with open('module-timings.yaml', 'r') as infile:
-    moduleTimings=yaml.load(infile)
-
-with open('module-timings.json', 'w') as outfile:
-   outfile.write(json.dumps(moduleTimings, indent=4))
+with open('module-timings.json', 'r') as infile:
+    moduleTimings=json.load(infile)
 
 modconsumes=list()
 for mod,consumes in moduleConsumes.items():
