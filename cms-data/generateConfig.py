@@ -3,9 +3,7 @@ import sys
 import yaml
 import re 
 from collections import defaultdict
-
-import pprint
-import StringIO
+import json
 
 if len(sys.argv) != 2:
     print "requires input with module relations from tracer log"
@@ -19,58 +17,65 @@ moduleRelations = defaultdict(list)
 moduleConsumes = defaultdict(list)
 moduleTimings = defaultdict(list)
 processName = None
-twospace=re.compile('^  \D*')
-fourspace=re.compile('^    \D*')
-modules=re.compile('.*modules:$')
-consumes=re.compile('.*consumes:$')
+module2space=re.compile("^\s\s(\S*)/'(\S*)'\n")
+module4space=re.compile("^\s\s\s\s(\S*)/'(\S*)'\n")
+fourspace=re.compile("^\s\s\s\s(\S*)\s'(\S*)'\s'(|\S*)'\s'(|\S*)'")
+modules=re.compile("^\s\s(\S*)/'(\S*)' consumes products from these modules:$")
+consumes=re.compile("^\s\s(\S*)/'(\S*)' consumes:$")
 tickspace=re.compile("' '")
 
 for l in f:
-    if twospace.match(l):
-        fields=tickspace.split(l)
-        if modules.match(l):
-            values = fields[0].split("'")
-            processName = values[-2]
-            moduleRelations[processName]=list()
-        if consumes.match(l):
-            values = fields[0].split("'")
-            processName = values[-2]
-            moduleConsumes[processName]=list()
+    if module4space.match(l):
+        print 'labels: ',re.match(module4space,l).groups()
+        labels=re.match(module4space,l).groups()
+        if len(labels) > 1:
+            if not labels[1] == '':
+                moduleRelations[processName].append(labels[1])
+    if module2space.match(l):
+        values=re.match(module2space,l).groups()
+        print values, 'has no consumes:'
+        processName = values[1]
+        moduleRelations[processName]=list()
+        moduleConsumes[processName]=list()
+    if modules.match(l):
+        values = re.match(modules,l).groups()
+        print values,'consumes products from these modules: '
+        processName = values[1]
+        moduleRelations[processName]=list()
+    if consumes.match(l):
+        values = re.match(consumes,l).groups()
+        print values, 'consumes: '
+        processName = values[1]
+        moduleConsumes[processName]=list()
     if fourspace.match(l):
-        fields=tickspace.split(l)
-        if len(fields) == 3:
-            if not fields[-1] == "RECO'\n":
-                labels=fields[0].split("'")
-                if not labels[-1] == '@EmptyLabel@':
-                    moduleConsumes[processName].append(labels[-1])
-        if len(fields) == 1:
-            labels=fields[0].split("'")
-            if len(labels) > 1:
-                if not labels[-2] == '':
-                    moduleRelations[processName].append(labels[-2])
+        fields=re.match(fourspace,l).groups()
+        print 'fields: ', fields
+        if not fields[-1] == "RECO":
+            if not fields[1] == '@EmptyLabel@':
+                print 'fields2: ',fields
+                moduleConsumes[processName].append(fields[1])
 
             
-#with open('module-storage2get.yaml', 'w') as outfile:
-#   outfile.write(yaml.dump(moduleConsumes, default_flow_style=True))
+with open('module-storage2get.json', 'w') as outfile:
+   outfile.write(json.dumps(moduleConsumes, indent=4))
 
-#with open('module-relations.yaml', 'w') as outfile:
-#   outfile.write(yaml.dump(moduleRelations, default_flow_style=True))
+with open('module-relations.json', 'w') as outfile:
+   outfile.write(json.dumps(moduleRelations, indent=4))
 
 with open('module-timings.yaml', 'r') as infile:
     moduleTimings=yaml.load(infile)
 
-#with open('module-storage2get.yaml', 'r') as infile:
-#    moduleConsumes=yaml.load(infile)
-#
-#with open('module-relations.yaml', 'r') as infile:
-#    moduleRelations=yaml.load(infile)
-#
+with open('module-timings.json', 'w') as outfile:
+   outfile.write(json.dumps(moduleTimings, indent=4))
 
-storageToGet=list()
+modconsumes=list()
 for mod,consumes in moduleConsumes.items():
-    storageToGet.append({"label":mod, "product":consumes})
+    modconsumes.append({"label":mod, "product":""})
+#storageToGet=list(consumes for mod,consumes in enumerate(modconsumes) if consumes not in modconsumes[:mod])
+storageToGet=modconsumes
+
 nEvents="100"
-recotimes=moduleTimings['RECOoutput']
+eventTimes = moduleTimings['RECOoutput']
 
 config = {
  "process" :
@@ -91,7 +96,7 @@ config = {
      { "@label" : "output",
        "@type" : "demo::EventTimesBusyWaitPassFilter",
        "threadType" : "ThreadSafeBetweenModules",
-       "eventTimes": recotimes[50:150],
+       "eventTimes": eventTimes[50:150],
        "toGet" : storageToGet
      }
    ],
@@ -109,34 +114,19 @@ config = {
 #add producers
 producers = config["process"]["producers"]
 for mod,dependents in moduleRelations.items():
-    time = moduleTimings.get(mod,[0.])
-    if len(time) == 200:
-        toGet = list()
-        for d in dependents:
-            toGet.append({"label":d, "product":""})
-        c = { "@label" : mod,
-          "@type" : "demo::EventTimesBusyWaitProducer",
-          "threadType" : "ThreadSafeBetweenInstances",
-          "eventTimes":time[50:150],
-          "toGet" :toGet
-        }
-        producers.append(c)
+    eventTimes = moduleTimings.get(mod,[0.]*200)
+    toGet = list()
+    for d in dependents:
+        toGet.append({"label":d, "product":""})
+    c = { "@label" : mod,
+      "@type" : "demo::EventTimesBusyWaitProducer",
+      "threadType" : "ThreadSafeBetweenInstances",
+      "eventTimes":eventTimes[50:150],
+      "toGet" :toGet
+    }
+    producers.append(c)
 
 
-
-with open('config.yaml', 'w') as outfile:
-   outfile.write(yaml.dump(config, default_flow_style=True))
-
-import pprint
-import StringIO
-output = StringIO.StringIO()
-#pp = pprint.PrettyPrinter(indent=3)
-pprint.pprint(config,stream=output)
-
-#have to convert single quotes to double quotes
-configString = output.getvalue()
-configString = configString.replace("'",'"')
-
-print configString
-
+with open('config.json','w') as outfile:
+    outfile.write(json.dumps(config,indent=3))
 
