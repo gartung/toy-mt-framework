@@ -40,3 +40,28 @@ add_library(SingleThreadedTestModules SHARED ${TEST_FILES} SingleThreadedFramewo
 
 add_executable(SingleThreadedDemo main.cpp)
 target_link_libraries(SingleThreadedDemo SingleThreadedFrameworkCore SingleThreadedTestModules)
+
+install(
+  TARGETS SingleThreadedFrameworkCore
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT LIBRARY
+)
+
+install(
+  TARGETS SingleThreadedTestModules
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT LIBRARY
+)
+
+install(
+  TARGETS SingleThreadedDemo
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  COMPONENT Runtime
+)    
+
