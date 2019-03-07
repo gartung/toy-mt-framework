@@ -16,6 +16,7 @@
 #include "Producer.h"
 #include "Filter.h"
 #include "WaitingTask.h"
+#include "omp.h"
 
 using namespace demo;
 
@@ -205,7 +206,7 @@ void EventProcessor::handleNextEventAsync(WaitingTaskHolder iHolder,
 
 
 
-void EventProcessor::processAll(unsigned int iNumConcurrentEvents) {
+void EventProcessor::processAll(unsigned int iNumConcurrentEvents, unsigned int auxThreads) {
   m_schedules.reserve(iNumConcurrentEvents);
 
   auto eventLoopWaitTask = std::shared_ptr<WaitingTask>(make_waiting_task([](auto) {}));
@@ -213,6 +214,7 @@ void EventProcessor::processAll(unsigned int iNumConcurrentEvents) {
   WaitingTaskHolder h( eventLoopWaitTask );
 #pragma omp parallel default(shared)
   {
+    omp_set_num_threads(auxThreads);
 #pragma omp single
     {
       for(unsigned int nEvents = 1; nEvents<iNumConcurrentEvents; ++ nEvents) {

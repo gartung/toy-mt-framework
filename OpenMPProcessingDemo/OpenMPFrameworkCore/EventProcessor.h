@@ -32,7 +32,7 @@ namespace demo {
     void addPath(const std::string& iName, const std::vector<std::string>& iModules);
     void addProducer(Producer* iProd);
     void addFilter(Filter* iFilter);
-    void processAll(unsigned int iNumConcurrentEvents);
+    void processAll(unsigned int iNumConcurrentEvents, unsigned int auxThreads);
     
     void finishSetup();
     

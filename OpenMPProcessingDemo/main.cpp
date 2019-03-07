@@ -114,7 +114,7 @@ int main (int argc, char * const argv[]) {
     
     //ep.processAll(2);
     unsigned int nEvents = pConfig.get<unsigned int>("process.options.nSimultaneousEvents");
-    ep.processAll(nEvents);
+    ep.processAll(nEvents, nThreads-nTopThreads+1);
     
     struct timeval tp;
     gettimeofday(&tp, 0);
