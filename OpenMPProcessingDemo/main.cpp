@@ -35,20 +35,23 @@ int main (int argc, char * const argv[]) {
 
 
   const unsigned int nThreads = pConfig.get<unsigned int>("process.options.nThreads",omp_get_max_threads());
-  setenv("OMP_THREAD_LIMIT",std::to_string(nThreads).c_str(), 0);
   assert(nThreads == omp_get_thread_limit());
 
   //if nTopThreads != nThreads then some threads are reserved for nested parallelism
   omp_set_nested(0);
   const unsigned int nTopThreads = pConfig.get<unsigned int>("process.options.nTopThreads",nThreads);
+  omp_set_num_threads(nTopThreads);
   if(nThreads != nTopThreads) {
     omp_set_max_active_levels(2);
     omp_set_nested(1);
+#ifdef __clang__
     omp_set_dynamic(1);
-  }
+#else
+    omp_set_dynamic(0);
+#endif
+   }
 
 
-  omp_set_num_threads(nTopThreads);
 
   //const size_t iterations= 3000;
   const size_t iterations = pConfig.get<size_t>("process.source.iterations");
